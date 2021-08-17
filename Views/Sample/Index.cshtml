@@ -1,0 +1,118 @@
+﻿@model WebApplication2.Models.ProjectAddEditView
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Ashil</h2>
+
+@using (Html.BeginForm())
+
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.CustomerName)
+        @Html.TextBoxFor(m => m.Project.CustomerName)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.ProjectName)
+        @Html.TextBoxFor(m => m.Project.ProjectName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.ProjectId)
+        @Html.TextBoxFor(m => m.Project.ProjectId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.Start_Date)
+        @Html.EditorFor(m => m.Project.Start_Date, "{DD/MM/YYYY}")
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.End_Date)
+        @Html.EditorFor(m => m.Project.End_Date, "{DD/MM/YYYY}")
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.ProjectStatus)
+        @Html.DropDownListFor(m => m.Project.ProjectStatus, new SelectList(Model.ProjectStatus, "KeyId", "KeyName"), new { @class = "form-group" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.LocationGroup)
+        @Html.DropDownListFor(m => m.Project.LocationGroup, new SelectList(Model.Locationgroup, "Id", "Name"), new { @class = "form-group" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.PayRollState)
+        @Html.DropDownListFor(m => m.Project.PayRollState, new SelectList(Model.Payroll, "Id", "Name"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.SalesPerson)
+        @Html.DropDownListFor(m => m.Project.SalesPerson, new SelectList(Model.Salesperson, "Id", "Name"), new { @class = "form-group" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.ProjectCategory)
+        @Html.DropDownListFor(m => m.Project.ProjectCategory, new SelectList(Model.ProjectCategory, "KeyId", "KeyName"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.ProjectType)
+        @Html.DropDownListFor(m => m.Project.ProjectType, new SelectList(Model.ProjectType, "KeyId", "KeyName"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.SubDomain)
+        @Html.DropDownListFor(m => m.Project.SubDomain, new SelectList(Model.Domains, "Id", "Name"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.TimeSheetRepresentative)
+        @Html.DropDownListFor(m => m.Project.TimeSheetRepresentative, new SelectList(Model.TimesheetRepresent, "Id", "Name"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.ClientInvoiceGroup)
+        @Html.DropDownListFor(m => m.Project.ClientInvoiceGroup, new SelectList(Model.ClientInvoiceGroup, "KeyId", "KeyName"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.TimeSheetType)
+        @Html.DropDownListFor(m => m.Project.TimeSheetType, new SelectList(Model.TimeSheetType, "KeyId", "KeyName"), new { @class = "form-group" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.IsVMSTimeSheet)
+        @Html.TextBoxFor(m => m.Project.IsVMSTimeSheet)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.PracticeType)
+        @Html.DropDownListFor(m => m.Project.PracticeType, new SelectList(Model.PracticeType, "KeyId", "KeyName"), new { @class = "form-group" })
+
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Project.Recruiter)
+        @Html.DropDownListFor(m => m.Project.Recruiter, new SelectList(Model.Recruiters, "Id", "Name"), new { @class = "form-group" })
+
+    </div>
+
+
+
+    <input type="submit" value="Submit" />
+}
