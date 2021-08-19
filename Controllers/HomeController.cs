@@ -26,5 +26,12 @@ namespace WebApplication2.Controllers
 
             return View();
         }
+
+        public ActionResult Table()
+        {
+            ViewBag.Message = "Your Table Will Appear here.";
+
+            return View();
+        }
     }
 }

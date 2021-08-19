@@ -1,12 +1,11 @@
 ﻿@model WebApplication2.Models.ProjectAddEditView
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Edit";
 }
 
+<h2>Edit</h2>
 
-<h2>Ashil</h2>
-
-@using (Html.BeginForm("Add","Sample"))
+@using (Html.BeginForm())
 
 {
 
@@ -133,12 +132,12 @@
 }
 
 
-<div>
-    @Html.ActionLink("Back to List", "Table")
-</div>
+
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/custom-validator")
 }
+
+

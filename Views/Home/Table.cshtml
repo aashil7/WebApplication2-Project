@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Your Table Will Appear here.";
+}
+
+<h2>Table For Project </h2>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <table>
+        <tr>
+            <th>CustomerName</th>
+            <th>ProjectName</th>
+            <th>ProjectId</th>
+            <th>Start_Date</th>
+            <th>End_Date</th>
+            <th>ProjectStatus</th>
+            <th>LocationGroup</th>
+            <th>PayRollState</th>
+            <th>SalesPerson</th>
+            <th>ProjectCategory</th>
+            <th>ProjectType</th>
+            <th>SubDomain</th>
+            <th>TimeSheetRepresentative</th>
+            <th>ClientInvoiceGroup</th>
+            <th>TimeSheetType</th>
+            <th>IsVMSTimeSheet</th>
+            <th>PracticeType</th>
+            <th>Recruiter</th>
+        </tr>
+       
+    </table>
+
+    <div>
+        @Html.ActionLink("Create", "Index")
+        @Html.ActionLink("Edit", "Index")
+    </div>
+
+
+</body>
+</html>
