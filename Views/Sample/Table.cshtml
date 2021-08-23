@@ -1,0 +1,158 @@
+﻿@model WebApplication2.Models.Project
+@{
+    ViewBag.Title = "Table";
+    //WebGrid grid = new WebGrid(Model, rowsPerPage: 10);
+}
+
+<h2>Table For Project </h2>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.End_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayRollState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubDomain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSheetRepresentative)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientInvoiceGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSheetType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVMSTimeSheet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PracticeType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recruiter)
+            </th>
+            <th></th>
+        </tr>
+
+        
+        @*@foreach (var item in Model)
+
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Start_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.End_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationGroup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayRollState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalesPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubDomain)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeSheetRepresentative)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientInvoiceGroup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeSheetType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsVMSTimeSheet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PracticeType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recruiter)
+                </td>
+            </tr>*@
+
+        }
+    </table>
+
+    <div>
+        @Html.ActionLink("Create", "Index")
+        @Html.ActionLink("Edit", "Index")
+    </div>
+
+
+
+</body>
+</html>

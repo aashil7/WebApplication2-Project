@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Your Table Will Appear here.";
+    ViewBag.Title = "Table";
 }
 
 <h2>Table For Project </h2>
@@ -48,13 +48,43 @@
             <th>PracticeType</th>
             <th>Recruiter</th>
         </tr>
+
        
-    </table>
+        {
+            
+
+
+            <tr>
+                <td>@Model.CustomerName</td>
+                <td>@Model.ProjectName</td>
+                <td>@Model.ProjectId</td>
+                <td>@Model.Start_Date</td>
+                <td>@Model.End_Date</td>
+                <td>@Model.ProjectStatus</td>
+                <td>@Model.LocationGroup</td>
+                <td>@Model.PayRollState</td>
+                <td>@Model.SalesPerson</td>
+                <td>@Model.ProjectCategory</td>
+                <td>@Model.ProjectType</td>
+                <td>@Model.SubDomain</td>
+                <td>@Model.TimeSheetRepresentative</td>
+                <td>@Model.ClientInvoiceGroup</td>
+                <td>@Model.TimeSheetType</td>
+                <td>@Model.IsVMSTimeSheet</td>
+                <td>@Model.PracticeType</td>
+                <td>@Model.Recruiter</td>
+
+            </tr>
+
+            }
+
+        </table>
 
     <div>
         @Html.ActionLink("Create", "Index")
         @Html.ActionLink("Edit", "Index")
     </div>
+
 
 
 </body>

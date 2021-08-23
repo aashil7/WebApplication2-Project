@@ -29,7 +29,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult Table()
         {
-            ViewBag.Message = "Your Table Will Appear here.";
+            ViewBag.Message = "Your Table list page.";
 
             return View();
         }

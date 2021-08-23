@@ -5,7 +5,7 @@ namespace WebApplication2.Models
 {
     public class Project
     {
-
+        
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide Name")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "First Name Should be min 3 and max 20 length")]
         public string CustomerName { get; set; }
@@ -17,7 +17,7 @@ namespace WebApplication2.Models
 
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide ProjectId")]
-        public int ProjectId { get; set; }
+        public int? ProjectId { get; set; }
 
 
 
@@ -35,50 +35,50 @@ namespace WebApplication2.Models
 
 
         [Required(ErrorMessage = "Please Select Project Status")]
-        public int ProjectStatus { get; set; }
+        public int? ProjectStatus { get; set; }
 
 
 
         [Required(ErrorMessage = "Please Select Location Group")]
-        public int LocationGroup { get; set; }
+        public int? LocationGroup { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Payroll State")]
-        public int PayRollState { get; set; }
+        public int? PayRollState { get; set; }
 
         [Required(ErrorMessage = "Please Select Sales Person")]
-        public int SalesPerson { get; set; }
+        public int? SalesPerson { get; set; }
 
         [Required(ErrorMessage = "Please Select ProjectCategory")]
-        public int ProjectCategory { get; set; }
+        public int? ProjectCategory { get; set; }
 
         [Required(ErrorMessage = "Please Select Project Type")]
-        public int ProjectType { get; set; }
+        public int? ProjectType { get; set; }
 
         [Required(ErrorMessage = "Please Select Sub Domain")]
-        public int SubDomain { get; set; }
+        public int? SubDomain { get; set; }
 
         [Required(ErrorMessage = "Please Select Timesheet Representative")]
-        public int TimeSheetRepresentative { get; set; }
+        public int? TimeSheetRepresentative { get; set; }
 
         [Required(ErrorMessage = "Please Select Client Invoice Group")]
-        public int ClientInvoiceGroup { get; set; }
+        public int? ClientInvoiceGroup { get; set; }
 
         [Required(ErrorMessage = "Please Select TimeSheet Type")]
-        public int TimeSheetType { get; set; }
+        public int? TimeSheetType { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide VMS Timesheet")]
-        public string IsVMSTimeSheet { get; set; }
+        public int? IsVMSTimeSheet { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Practice Type")]
-        public int PracticeType { get; set; }
+        public int? PracticeType { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Recruiter")]
-        public int Recruiter { get; set; }
+        public int? Recruiter { get; set; }
 
-        
+
 
     }
 }

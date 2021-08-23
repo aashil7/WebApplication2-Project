@@ -4,14 +4,14 @@ using System.Web.Mvc;
 using WebApplication2.Models;
 using WebApplication2.repository;
 using System.Configuration;
-using System.Collections.Generic;
-using System;
+
 
 namespace WebApplication2.Controllers
 {
     public class SampleController : Controller
     {
         public SqlConnection con;
+
 
         public ActionResult Index()
         {
@@ -63,7 +63,10 @@ namespace WebApplication2.Controllers
             con = new SqlConnection(_conString);
 
         }
-        public bool Add(ProjectAddEditView obj)
+
+
+
+        public ActionResult Add(ProjectAddEditView obj)
         {
             Connection();
             SqlCommand com = new SqlCommand("Project_Ashil_Training", con);
@@ -94,17 +97,44 @@ namespace WebApplication2.Controllers
             if (i >= 1)
             {
 
-                return true;
+                return View("Table");
 
             }
-            else
-            {
 
-                return false;
-            }
-
+            return View("Index");
 
         }
+
+
+
+
+
+
+
+
+
+        //public ActionResult List()
+        //{
+        //    var model = Project.GetList();
+        //    return View(model);
+        //}
+
+
+
+
+
+
+
+
+
+        public ActionResult Tableview()
+        {
+            return View();
+        }
+
+
+
+
 
 
         // POST: Student/Create
@@ -116,7 +146,7 @@ namespace WebApplication2.Controllers
         //        if (ModelState.IsValid)
         //        {
         //            common sdb = new common();
-        //            if (sdb.Pro(Pmodel))
+        //            if (sdb.GetList(Pmodel))
         //            {
         //                ViewBag.Message = "Student Details Added Successfully";
         //                ModelState.Clear();
@@ -132,11 +162,32 @@ namespace WebApplication2.Controllers
 
 
 
-        public ActionResult Create()
+        public ActionResult Table()
         {
-            return View ("Index");
+            ViewBag.Message = "Index.";
+
+            return View();
         }
 
+    }
+}
+
+     
+
+
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult TermsAccept()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        con.ConnectionString = "Accepted";
+        //    }
+        //    return View("Index");
+        //}
 
 
 
@@ -146,7 +197,7 @@ namespace WebApplication2.Controllers
 
         //public ActionResult Edit(int id)
         //{
-            
+
         //    return View(db.GetView().Find(smodel => smodel.Id == id));
         //}
 
@@ -166,8 +217,7 @@ namespace WebApplication2.Controllers
         //    }
         //}
 
-    }
-}
+   
 
 
 
@@ -192,46 +242,48 @@ namespace WebApplication2.Controllers
 
 
 
-//            public ActionResult Add()
+//    public ActionResult Add()
+//    {
+
+//    List<Project> ProjectList = new List<Project>();
+//    string _conString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+//    con = new SqlConnection(_conString);
+//    {
+//        SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
+//        cmd.CommandType = CommandType.Text;
+//        con.Open();
+
+//        SqlDataReader rdr = cmd.ExecuteReader();
+//        while (rdr.Read())
 //        {
-
-//            List<Project> ProjectList = new List<Project>();
-//            string _conString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
-//            con = new SqlConnection(_conString);
-//            {
-//                SqlCommand cmd = new SqlCommand("SELECT * FROM ProjectTable_Ashil", con);
-//                cmd.CommandType = CommandType.Text;
-//                con.Open();
-
-//                SqlDataReader rdr = cmd.ExecuteReader();
-//                while (rdr.Read())
-//                {
-//                    var Project = new Project();
-//Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
-//Project.CustomerName = Convert.ToString(rdr["CustomerName"]);
-//Project.ProjectName = Convert.ToString(rdr["ProjectName"]);
-//Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
-//Project.Start_Date = Convert.ToDateTime(rdr["Start_Date"]);
-//Project.End_Date = Convert.ToDateTime(rdr["End_Date"]);
-//Project.ProjectStatus = Convert.ToInt32(rdr["ProjectStatus"]);
-//Project.LocationGroup = Convert.ToInt32(rdr["LocationGroup"]);
-//Project.PayRollState = Convert.ToInt32(rdr["PayRollState"]);
-//Project.SalesPerson = Convert.ToInt32(rdr["SalesPerson"]);
-//Project.ProjectCategory = Convert.ToInt32(rdr["ProjectCategory"]);
-//Project.ProjectType = Convert.ToInt32(rdr["ProjectType"]);
-//Project.SubDomain = Convert.ToInt32(rdr["SubDomain"]);
-//Project.TimeSheetRepresentative = Convert.ToInt32(rdr["TimeSheetRepresentative"]);
-//Project.ClientInvoiceGroup = Convert.ToInt32(rdr["ClientInvoiceGroup"]);
-//Project.TimeSheetType = Convert.ToInt32(rdr["TimeSheetType"]);
-//Project.IsVMSTimeSheet = Convert.ToString(rdr["IsVMSTimeSheet"]);
-//Project.PracticeType = Convert.ToInt32(rdr["PracticeType"]);
-//Project.Recruiter = Convert.ToInt32(rdr["Recruiter"]);
+//            var Project = new Project();
+//            Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
+//            Project.CustomerName = Convert.ToString(rdr["CustomerName"]);
+//            Project.ProjectName = Convert.ToString(rdr["ProjectName"]);
+//            Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
+//            Project.Start_Date = Convert.ToDateTime(rdr["Start_Date"]);
+//            Project.End_Date = Convert.ToDateTime(rdr["End_Date"]);
+//            Project.ProjectStatus = Convert.ToInt32(rdr["ProjectStatus"]);
+//            Project.LocationGroup = Convert.ToInt32(rdr["LocationGroup"]);
+//            Project.PayRollState = Convert.ToInt32(rdr["PayRollState"]);
+//            Project.SalesPerson = Convert.ToInt32(rdr["SalesPerson"]);
+//            Project.ProjectCategory = Convert.ToInt32(rdr["ProjectCategory"]);
+//            Project.ProjectType = Convert.ToInt32(rdr["ProjectType"]);
+//            Project.SubDomain = Convert.ToInt32(rdr["SubDomain"]);
+//            Project.TimeSheetRepresentative = Convert.ToInt32(rdr["TimeSheetRepresentative"]);
+//            Project.ClientInvoiceGroup = Convert.ToInt32(rdr["ClientInvoiceGroup"]);
+//            Project.TimeSheetType = Convert.ToInt32(rdr["TimeSheetType"]);
+//            Project.IsVMSTimeSheet = Convert.ToInt32(rdr["IsVMSTimeSheet"]);
+//            Project.PracticeType = Convert.ToInt32(rdr["PracticeType"]);
+//            Project.Recruiter = Convert.ToInt32(rdr["Recruiter"]);
 
 
 
-//                }
-//            }
-//            return View(ProjectList);
 //        }
 //    }
+//    return View(ProjectList);
 //}
+
+
+
+   

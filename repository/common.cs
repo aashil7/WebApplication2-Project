@@ -185,8 +185,19 @@ namespace WebApplication2.repository
         }
 
 
-     
+        //public DataSet GetList(ProjectAddEditView pmodel)
+        //{
 
+        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DbConnection"].ToString());
+        //    SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter da = new SqlDataAdapter();
+        //    da.SelectCommand = cmd;
+        //    DataSet myrec = new DataSet();
+        //    da.Fill(myrec);
+        //    return myrec;
+        //}
 
+      
     }
 }

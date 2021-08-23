@@ -37,5 +37,10 @@ namespace WebApplication2.Models
 
         public List<Projlist> Payroll { get; set; }
 
+        //public List<Project> GetList
+        //{
+         
+        //}
+
     }
 }

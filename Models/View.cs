@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace WebApplication2.Models
 {
@@ -26,17 +24,23 @@ namespace WebApplication2.Models
 
             SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
             cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
             SqlDataAdapter sd = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
-
-            con.Open();
             sd.Fill(dt);
-            con.Close();
+            List<Project> Pro = new List<Project>();
+
+         /*   con.Open();
+            sd.Fill(dt);
+            con.Close();*/
 
             foreach (DataRow dr in dt.Rows)
             {
-                Projectlist.Add(
-                    new Project
+               /* Projectlist.Add(
+                    new Project*/
+
+                Pro.Add(new Project
+
                     {
 
                         CustomerName = Convert.ToString(dr["CustomerName"]),
@@ -54,12 +58,13 @@ namespace WebApplication2.Models
                         TimeSheetRepresentative = Convert.ToInt32(dr["TimeSheetRepresentative"]),
                         ClientInvoiceGroup = Convert.ToInt32(dr["ClientInvoiceGroup"]),
                         TimeSheetType = Convert.ToInt32(dr["TimeSheetType"]),
-                        IsVMSTimeSheet = Convert.ToString(dr["IsVMSTimeSheet"]),
+                        IsVMSTimeSheet = Convert.ToInt32(dr["IsVMSTimeSheet"]),
                         PracticeType = Convert.ToInt32(dr["PracticeType"]),
                         Recruiter = Convert.ToInt32(dr["Recruiter"]),
                     });
             }
-            return Projectlist;
+            con.Close();
+            return (Pro);
         }
 
     }
