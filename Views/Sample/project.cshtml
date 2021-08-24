@@ -1,43 +1,147 @@
-﻿
-@model WebApplication2.Controllers.API.SampleController
+﻿@*@model WebApplication2.Controllers.API.ProjectController*@
 
-
-@{ 
-    
-    ViewBag.Title = "SampleAdd";
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
-    
-    }
+@{ ViewBag.Title = "SampleAdd";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h2>SampleAdd</h2>
 <form>
+    
+    <div class="form-group">
+        <label>Name</label>
+    </div>
+    <div class="form-group">
+        <input type="text" id="empName" />
+    </div>
     <div class="form-group">
         <label>CustomerName</label>
+    </div>
+    <div class="form-group">
+        <input type="text" id="CustomerName" />
+    </div>
+    <div class="form-group">
         <label>ProjectName</label>
+        <input type="text" id="ProjectName" />
+    </div>
+    <div class="form-group">
         <label>ProjectId</label>
+        <input type="text" id="ProjectId" />
+    </div>
+    <div class="form-group">
         <label>Start_Date</label>
+        <input type="date" id="Start_Date" />
+    </div>
+    <div class="form-group">
         <label>End_Date</label>
-        <label>ProjectStatus</label>
-        <input type="text" id="empName" />
+        <input type="date" id="End_Date" />
     </div>
 
     <div class="form-group">
+        <label>Working company</label>
+        <select id="workingCompany">
+            <option value="1">Compunnel India</option>
+            <option value="2">Compunnel Healthcare</option>
+            <option value="3">Logix India</option>
+        </select>
+    </div>
+
+
+
+    <div class="form-group">
         <label>Project Status</label>
-        <select id="ddlProjectId">
+   
+        <select id="ddlProjectStatus" class="form-control">
+       
+        </select>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label>LocationGroup </label>
+        <select id="ddlLocationGroup" class="form-control">
         </select>
     </div>
     <div class="form-group">
-        <label>Project Type</label>
-        <select id="ddlProjectType">
+        <label>PayRollState </label>
+        <select id="ddlPayRollState" class="form-control">
         </select>
     </div>
+
+    <div class="form-group">
+        <label>SalesPerson Name </label>
+        <select id="ddlSalesPersonName" class="form-control">
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Project Category </label>
+        <select id="ddlProjectCategory" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Project Type </label>
+        <select id="ddlProjectType" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Sub Domain </label>
+        <select id="ddlSubDomain" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>TimeSheet Representative </label>
+        <select id="ddlTimeSheetRepresentative" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Timesheet Type </label>
+        <select id="ddlTimesheetType" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Practice Type</label>
+        <select id="ddlPracticeType" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Recruiter</label>
+        <select id="ddlRecruiter" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Invoice Group</label>
+        <select id="ddlInvoiceGroup" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <input type="radio" id="1" value="Yes">
+        <label for="1">Yes</label>
+        <input type="radio" id="2"  value="NO">
+        <label for="2">NO</label>
+    </div>
+
+
+
     <input type="button" value="Save" id="btnSave" />
 </form>
 
 @section scripts{
 
-    <script>$(document).ready(function(){
-            BindProjectTypeList();
+
+
+    <script>
+        $(document).ready(function () {
+            BindProjectStatusList();
             $("#btnSave").on("click", function () {
                 if (IsValidate()) {
                     SaveData();
@@ -49,34 +153,66 @@
         function IsValidate() {
             return true;
         }
-        function BindProjectTypeList() {
+        function SaveData() {
+            let vm = {
+                Name: "",
+                CustomerName: "",
+                ProjectName: "",
+                ProjectId: "",
+                Start_Date: "",
+                End_Date: "",
+                CompanyId: 0,
+                ProjectStatus: 0,
+                //LocationGroup: 0,
+                //PayRollState:0
+            };
+            vm.Name = $("#empName").val();
+            vm.CustomerName = $("#CustomerName").val();
+            vm.ProjectName = $("#ProjectName").val();
+            vm.ProjectId = $("#ProjectId").val();
+            vm.Start_Date = $("#Start_Date").val();
+            vm.End_Date = $("#End_Date").val();
+            vm.CompanyId = $("#workingCompany").val();
+            vm.ProjectStatus = $("#ddlProjectStatus").val();
+            //vm.LocationGroup = $("#ddlLocationGroup").val();
+            //vm.PayRollState = $("#ddlPayRollState").val();
+
+            console.log(vm);
+
+            $.ajax({
+                method: "POST",
+                url: "/sample/project",
+                dataType: "json",
+                data: vm,
+                success: function () { },
+                error: function () { }
+            });
+
+        }
+
+
+
+
+
+        function BindProjectStatusList() {
             $.ajax({
                 method: "GET",
                 url: "/sample/GetAppRefData?parentId=1800",
                 success: function (data) {
                     console.log(data);
 
-                    //ddlProjectType
+                    //ddlProjectstatus
                 },
                 error: function () { }
             });
+
         }
 
 
 
-        
-
-        function BindProjectTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/sample/GetAppRefData?parentId=4650",
-                success: function (data) {
-                    console.log(data);
-
-                    //ddlProjectType
-                },
-                error: function () { }
-            });
-        }
     </script>
 }
+
+
+
+

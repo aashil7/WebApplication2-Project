@@ -32,7 +32,7 @@ namespace WebApplication2.repository
             while (reader.Read())
             {
                 appRefDataList.Add(
-                    new AppRefData { KeyId = Convert.ToInt32(reader["KeyId"]), KeyName = reader["KeyName"].ToString() }
+                    new AppRefData { KeyId = Convert.ToInt32(reader["KeyId"]), KeyName = Convert.ToString(reader["KeyName"]) }
                     );
             }
 

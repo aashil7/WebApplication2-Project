@@ -6,6 +6,7 @@ using WebApplication2.repository;
 using System.Configuration;
 
 
+
 namespace WebApplication2.Controllers
 {
     public class SampleController : Controller
@@ -107,58 +108,10 @@ namespace WebApplication2.Controllers
 
 
 
-
-
-
-
-
-
-        //public ActionResult List()
-        //{
-        //    var model = Project.GetList();
-        //    return View(model);
-        //}
-
-
-
-
-
-
-
-
-
         public ActionResult Tableview()
         {
             return View();
         }
-
-
-
-
-
-
-        // POST: Student/Create
-        //[HttpPost]
-        //public ActionResult Create(ProjectAddEditView Pmodel)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            common sdb = new common();
-        //            if (sdb.GetList(Pmodel))
-        //            {
-        //                ViewBag.Message = "Student Details Added Successfully";
-        //                ModelState.Clear();
-        //            }
-        //        }
-        //        return View();
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
 
 
@@ -169,25 +122,27 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+
+
+        public ActionResult Add()
+        {
+            var model = new ProjectAddEditView();
+            return View(model);
+        }
+
+
+         public ActionResult project()
+        {
+            return View();
+        }
+
+
+
+
+
     }
 }
 
-     
-
-
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult TermsAccept()
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        con.ConnectionString = "Accepted";
-        //    }
-        //    return View("Index");
-        //}
 
 
 
@@ -195,31 +150,82 @@ namespace WebApplication2.Controllers
 
 
 
-        //public ActionResult Edit(int id)
-        //{
-
-        //    return View(db.GetView().Find(smodel => smodel.Id == id));
-        //}
-
-        //// POST: Student/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int ID, View Pmodel)
-        //{
-        //    try
-        //    {
-        //        View db = new View();
-        //        db.GetView(View,Pmodel);
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-   
 
 
+//[HttpPost]
+//[ValidateAntiForgeryToken]
+//public ActionResult TermsAccept()
+//{
+//    if (ModelState.IsValid)
+//    {
+
+//        con.ConnectionString = "Accepted";
+//    }
+//    return View("Index");
+//}
+
+
+
+
+
+
+//public ActionResult List()
+//{
+//    var model = Project.GetList();
+//    return View(model);
+//}
+
+
+
+
+
+
+//public ActionResult Edit(int id)
+//{
+
+//    return View(db.GetView().Find(smodel => smodel.Id == id));
+//}
+
+//// POST: Student/Edit/5
+//[HttpPost]
+//public ActionResult Edit(int ID, View Pmodel)
+//{
+//    try
+//    {
+//        View db = new View();
+//        db.GetView(View,Pmodel);
+//        return RedirectToAction("Index");
+//    }
+//    catch
+//    {
+//        return View();
+//    }
+//}
+
+
+
+// POST: Student/Create
+//[HttpPost]
+//public ActionResult Create(ProjectAddEditView Pmodel)
+//{
+//    try
+//    {
+//        if (ModelState.IsValid)
+//        {
+//            common sdb = new common();
+//            if (sdb.GetList(Pmodel))
+//            {
+//                ViewBag.Message = "Student Details Added Successfully";
+//                ModelState.Clear();
+//            }
+//        }
+//        return View();
+//    }
+//    catch
+//    {
+//        return View();
+//    }
+//}
 
 
 
@@ -286,4 +292,3 @@ namespace WebApplication2.Controllers
 
 
 
-   
