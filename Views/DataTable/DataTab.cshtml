@@ -1,0 +1,176 @@
+﻿
+@{
+    ViewBag.Title = "DataTab";
+}
+
+
+<h2>Projects List</h2>
+
+<table id="prjList" class="table-bordered table-striped">
+   
+    <thead>
+        <tr>
+            @*<th>Id</th>
+            <th>Status</th>*@
+
+            <th>CustomerName</th>
+
+            <th>
+                ProjectName
+            </th>
+            <th>
+                ProjectId
+            </th>
+            <th>
+                Start_Date
+            </th>
+            <th>
+                End_Date
+            </th>
+            <th>
+                ProjectStatus
+            </th>
+            <th>
+                LocationGroup
+            </th>
+            <th>
+                PayRollState
+            </th>
+            <th>
+                SalesPerson
+            </th>
+            <th>
+                ProjectCategory
+            </th>
+            <th>
+                ProjectType
+            </th>
+            <th>
+                SubDomain
+            </th>
+            <th>
+                TimeSheetRepresentative
+            </th>
+            <th>
+                ClientInvoiceGroup
+            </th>
+            <th>
+                TimeSheetType
+            </th>
+            <th>
+                IsVMSTimeSheet
+            </th>
+            <th>
+                PracticeType
+            </th>
+            <th>
+                Recruiter
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    @*<tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+
+                <th>
+                    CustomerName
+                </th>
+                <th>
+                    ProjectName
+                </th>
+                <th>
+                    Start_Date
+                </th>
+                <th>
+                    End_Date
+                </th>
+                <th>
+                    ProjectStatus
+                </th>
+                <th>
+                    LocationGroup
+                </th>
+                <th>
+                    PayRollState
+                </th>
+                <th>
+                    SalesPerson
+                </th>
+                <th>
+                    ProjectCategory
+                </th>
+                <th>
+                    ProjectType
+                </th>
+                <th>
+                    SubDomain
+                </th>
+                <th>
+                    TimeSheetRepresentative
+                </th>
+                <th>
+                    ClientInvoiceGroup
+                </th>
+                <th>
+                    TimeSheetType
+                </th>
+                <th>
+                    IsVMSTimeSheet
+                </th>
+                <th>
+                    PracticeType
+                </th>
+                <th>
+                    Recruiter
+                </th>
+            </tr>
+        </tfoot>*@
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#prjList").DataTable({
+                ajax: {
+                    url: "/ProjectApi/GetAppRefData?parentid=4650",
+                    
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "keyId"
+                    },
+                    {
+                        data: "keyName",
+                     /*   render: function (data) { return "Ye naam hai:" + data }*/
+                    }],
+             
+  
+          
+            });
+
+        });
+
+    </script>
+}
+
+
+    @*$("#prjList").DataTable({
+            ajax: {
+                url: "/ ProjectApi/GetProjectType?parentId = 4650",
+                dataSrc: ""
+            },
+            columns: [
+                        {
+                            data:"keyId"
+                        },
+                        {
+                            data: "KeyName"
+                        },
+                        {
+                            data:"ProjectId"
+                        }]*@

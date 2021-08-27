@@ -24,13 +24,13 @@ namespace WebApplication2.Models
         [Required(ErrorMessage = "Please Select Date Of Birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
-        public DateTime Start_Date { get; set; }
+        public string Start_Date { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Date Of Birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
-        public DateTime End_Date { get; set; }
+        public string End_Date { get; set; }
 
 
 
@@ -79,6 +79,6 @@ namespace WebApplication2.Models
         public int? Recruiter { get; set; }
 
 
-
+        
     }
 }

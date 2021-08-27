@@ -1,4 +1,4 @@
-﻿@model WebApplication2.Models.Project
+﻿@model IEnumerable<WebApplication2.Models.Project>
 @{
     ViewBag.Title = "Table";
     //WebGrid grid = new WebGrid(Model, rowsPerPage: 10);
@@ -90,7 +90,7 @@
             </thead>
 
         
-        @*@foreach (var item in Model)
+       @foreach (var item in Model)
 
         {
             <tr>
@@ -147,7 +147,7 @@
                 </td>
             </tr>
 
-        }*@
+        }
     </table>
 
     <div>

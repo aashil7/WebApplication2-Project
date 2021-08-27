@@ -33,5 +33,12 @@ namespace WebApplication2.Controllers
 
             return View();
         }
+
+
+        public ActionResult project()
+        {
+            ViewBag.Title = "SampleAdd";
+            return View();
+        }
     }
 }

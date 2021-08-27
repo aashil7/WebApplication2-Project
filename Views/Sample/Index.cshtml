@@ -6,7 +6,7 @@
 
 <h2>Ashil</h2>
 
-@using (Html.BeginForm("Add", "Index"))
+@using (Html.BeginForm("Add","Sample"))
 
 {
 
@@ -33,13 +33,13 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Project.Start_Date)
             @Html.EditorFor(m => m.Project.Start_Date, "{DD/MM/YYYY}")
-            @Html.ValidationMessageFor(m => m.Project.Start_Date, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.Project.Start_Date,"", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
             @Html.LabelFor(m => m.Project.End_Date)
             @Html.EditorFor(m => m.Project.End_Date, "{DD/MM/YYYY}")
-            @Html.ValidationMessageFor(m => m.Project.End_Date, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.Project.End_Date,"", new { @class = "text-danger" })
         </div>
 
 

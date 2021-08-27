@@ -6,13 +6,12 @@ using WebApplication2.repository;
 using System.Configuration;
 
 
-
 namespace WebApplication2.Controllers
 {
     public class SampleController : Controller
     {
         public SqlConnection con;
-
+        common DB = new common();
 
         public ActionResult Index()
         {
@@ -70,7 +69,7 @@ namespace WebApplication2.Controllers
         public ActionResult Add(ProjectAddEditView obj)
         {
             Connection();
-            SqlCommand com = new SqlCommand("Project_Ashil_Training", con);
+            SqlCommand com = new SqlCommand("ProjectView_Ashil_Training", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@CustomerName", obj.Project.CustomerName);
             com.Parameters.AddWithValue("@ProjectName", obj.Project.ProjectName);
@@ -117,25 +116,53 @@ namespace WebApplication2.Controllers
 
         public ActionResult Table()
         {
-            ViewBag.Message = "Index.";
+            var result = new repository.common().GetProjectsList();
+            
 
+            return View(result);
+        }
+
+
+        public ActionResult project()
+        {
+         
             return View();
         }
 
 
 
-        public ActionResult Add()
+         public ActionResult data()
         {
-            var model = new ProjectAddEditView();
-            return View(model);
-        }
-
-
-         public ActionResult project()
-        {
+          
             return View();
         }
 
+
+      
+
+
+        //public ActionResult GetDetails()
+        //{
+        //    //var data = DB.tblStuds.ToList();
+        //    var data = DB.AppRefData.ToList();
+        //    return PartialView(data);
+        //}
+
+
+
+        //public JsonResult GetAppRefData()
+        //{
+        //    return Json("",JsonRequestBehavior.AllowGet);
+        //}
+
+
+
+        //public ActionResult ProjectStatus(int parentId)
+        //{
+        //    common objRepo = new common();
+        //    var appRefStatus = objRepo.GetAppRefData(parentId);
+        //    return View(appRefStatus);
+        //}
 
 
 

@@ -1,135 +1,146 @@
-﻿@*@model WebApplication2.Controllers.API.ProjectController*@
+﻿
 
-@{ ViewBag.Title = "SampleAdd";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+@{
+    ViewBag.Title = "SampleAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <h2>SampleAdd</h2>
-<form>
-    
-    <div class="form-group">
-        <label>Name</label>
-    </div>
-    <div class="form-group">
-        <input type="text" id="empName" />
-    </div>
+
+<form name="ProForm">
+
+    <div class="col-md-6">
     <div class="form-group">
         <label>CustomerName</label>
+        
+        <input type="text" id="CustomerName" class="form-control"  />
+
     </div>
-    <div class="form-group">
-        <input type="text" id="CustomerName" />
-    </div>
+
     <div class="form-group">
         <label>ProjectName</label>
-        <input type="text" id="ProjectName" />
+        <input type="text" id="ProjectName" class="form-control" />
     </div>
+
     <div class="form-group">
         <label>ProjectId</label>
-        <input type="text" id="ProjectId" />
+        <input type="text" id="ProjectId" class="form-control" />
     </div>
+
     <div class="form-group">
         <label>Start_Date</label>
-        <input type="date" id="Start_Date" />
+        <input type="date" id="Start_Date" class="form-control" />
     </div>
+
     <div class="form-group">
         <label>End_Date</label>
-        <input type="date" id="End_Date" />
+        <input type="date" id="End_Date" class="form-control" />
     </div>
-
-    <div class="form-group">
-        <label>Working company</label>
-        <select id="workingCompany">
-            <option value="1">Compunnel India</option>
-            <option value="2">Compunnel Healthcare</option>
-            <option value="3">Logix India</option>
-        </select>
-    </div>
-
 
 
     <div class="form-group">
         <label>Project Status</label>
-   
         <select id="ddlProjectStatus" class="form-control">
-       
+            <option value="" disabled selected hidden>Select Project Status</option>
         </select>
     </div>
 
+
+       
+
+
+    <div class="form-group">
+        <label>Project Type </label>
+        <select id="ddlProjectType" class="form-control">
+            <option value="" disabled selected hidden>Select Project Type</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label>Project Category </label>
+        <select id="ddlProjectCategory" class="form-control">
+            <option value="" disabled selected hidden>Select Project Category</option>
+        </select>
+    </div>
 
 
 
     <div class="form-group">
         <label>LocationGroup </label>
         <select id="ddlLocationGroup" class="form-control">
+            <option value="" disabled selected hidden>Select Loation Group</option>
         </select>
     </div>
+
+
+        </div>
+
+
     <div class="form-group">
         <label>PayRollState </label>
         <select id="ddlPayRollState" class="form-control">
+            <option value="" disabled selected hidden>Select PayRoll State</option>
         </select>
     </div>
 
     <div class="form-group">
-        <label>SalesPerson Name </label>
+        <label>SalesPerson</label>
         <select id="ddlSalesPersonName" class="form-control">
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <label>Project Category </label>
-        <select id="ddlProjectCategory" class="form-control">
+            <option value="" disabled selected hidden>Select Sales Person</option>
         </select>
     </div>
 
-    <div class="form-group">
-        <label>Project Type </label>
-        <select id="ddlProjectType" class="form-control">
-        </select>
-    </div>
+
 
     <div class="form-group">
         <label>Sub Domain </label>
         <select id="ddlSubDomain" class="form-control">
+            <option value="" disabled selected hidden>Select Sub Domain</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>TimeSheet Representative </label>
         <select id="ddlTimeSheetRepresentative" class="form-control">
+            <option value="" disabled selected hidden>Select TimeSheet Representative</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Timesheet Type </label>
         <select id="ddlTimesheetType" class="form-control">
+            <option value="" disabled selected hidden>Select TimeSheet Type</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Practice Type</label>
         <select id="ddlPracticeType" class="form-control">
+            <option value="" disabled selected hidden>Select Practice Type</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Recruiter</label>
         <select id="ddlRecruiter" class="form-control">
+            <option value="" disabled selected hidden>Select  Recruiter</option>
         </select>
     </div>
 
     <div class="form-group">
-        <label>Invoice Group</label>
+        <label>Client Invoice Group</label>
         <select id="ddlInvoiceGroup" class="form-control">
+            <option value="" disabled selected hidden>Select Invoice Group</option>
         </select>
     </div>
 
+
     <div class="form-group">
-
-        <input type="radio" id="1" value="Yes">
-        <label for="1">Yes</label>
-        <input type="radio" id="2"  value="NO">
-        <label for="2">NO</label>
+        <label>Is VMS TimeSheet</label>
+        <input type="radio" id="ddlIsVms1" name="IsVmsTimeSheet" value="Yes"><label for="ddlIsVmsYes">Yes</label>
+        <input type="radio" id="ddlIsVms2" name="IsVmsTimeSheet" value="No"><label for="ddlIsVmsNo">No</label>
     </div>
-
 
 
     <input type="button" value="Save" id="btnSave" />
@@ -137,11 +148,20 @@
 
 @section scripts{
 
-
-
     <script>
         $(document).ready(function () {
             BindProjectStatusList();
+            BindProjectTypeList();
+            BindProjectCategoryList();
+            BindClientInvoiceGroupList();
+            BindTimeSheetTypeList();
+            BindPracticeTypeList();
+            BindRecruiterList();
+            BindDomainList();
+            BindLocationList();
+            BindTimeSheetRepList();
+            BindSalesPersonList();
+            BindPayRollList();
             $("#btnSave").on("click", function () {
                 if (IsValidate()) {
                     SaveData();
@@ -151,42 +171,227 @@
         });
 
         function IsValidate() {
+            var CustomerName = document.forms["ProForm"]["CustomerName"];
+            var ProjectName = document.forms["ProForm"]["ProjectName"];
+            var ProjectId = document.forms["ProForm"]["ProjectId"];
+            var Start_Date = document.forms["ProForm"]["Start_Date"];
+            var ProjectStatus = document.forms["ProForm"]["ddlProjectStatus"];
+            var LocationGroup = document.forms["ProForm"]["ddlLocationGroup"];
+            var PayRoll = document.forms["ProForm"]["ddlPayRollState"];
+            var SalesPerson = document.forms["ProForm"]["ddlSalesPersonName"];
+            var ProjectCategory = document.forms["ProForm"]["ddlProjectCategory"];
+            var SubDomain = document.forms["ProForm"]["ddlSubDomain"];
+            var ProjectType = document.forms["ProForm"]["ddlProjectType"];
+            var TimeRep = document.forms["ProForm"]["ddlTimeSheetRepresentative"];
+            var TimeSheetType = document.forms["ProForm"]["ddlTimesheetType"];
+            var PracticeType = document.forms["ProForm"]["ddlPracticeType"];
+            var Recruiter = document.forms["ProForm"]["ddlRecruiter"];
+            var Invoice = document.forms["ProForm"]["ddlInvoiceGroup"];
+            
+
+            /* if (CustomerName.value == "") {*/
+            if (CustomerName.value === "") {
+                window.alert("Please enter Customer name.");
+                CustomerName.focus();
+                return false;
+            }
+            else if (CustomerName.value.length <= 2) {
+                window.alert("Please Enter Atleast 3 Letters in Customer Name");
+                CustomerName.focus();
+                return false;
+            
+            }
+
+
+
+            if (ProjectName.value == "") {
+                window.alert("Please enter Project name.");
+                ProjectName.focus();
+                return false;
+            }
+
+            if (ProjectId.value == "") {
+                window.alert("Please enter Project Id.");
+                ProjectId.focus();
+                return false;
+            }
+
+            if (Start_Date.value == "") {
+                window.alert("Please Select Start Date .");
+                Start_Date.focus();
+                return false;
+            }
+
+            if (ProjectStatus.value == "") {
+                window.alert("Please Select Project Status .");
+                ProjectStatus.focus();
+                return false;
+            }
+
+            if (ProjectType.value == "") {
+                window.alert("Please Select  Project Type .");
+                ProjectType.focus();
+                return false;
+            }
+
+            if (ProjectCategory.value == "") {
+                window.alert("Please Select  Project Category .");
+                ProjectCategory.focus();
+                return false;
+            }
+
+            if (LocationGroup.value == "") {
+                window.alert("Please Select Location Group .");
+                LocationGroup.focus();
+                return false;
+            }
+
+            if (PayRoll.value == "") {
+                window.alert("Please Select PayRoll .");
+                PayRoll.focus();
+                return false;
+            }
+
+            if (SalesPerson.value == "") {
+                window.alert("Please Select  Sales Person .");
+                SalesPerson.focus();
+                return false;
+            }
+
+
+
+            if (SubDomain.value == "") {
+                window.alert("Please Select  Sub Domain .");
+                SubDomain.focus();
+                return false;
+            }
+
+
+            if (TimeRep.value == "") {
+                window.alert("Please Select  TimeSheet Representative .");
+                TimeRep.focus();
+                return false;
+            }
+
+
+            if (TimeSheetType.value == "") {
+                window.alert("Please Select  TimeSheet Type .");
+                TimeSheetType.focus();
+                return false;
+            }
+
+
+            if (PracticeType.value == "") {
+                window.alert("Please Select  Practice Type .");
+                PracticeType.focus();
+                return false;
+            }
+
+
+
+            if (Recruiter.value == "") {
+                window.alert("Please Select  Recruiter .");
+                Recruiter.focus();
+                return false;
+            }
+
+
+            if (Invoice.value == "") {
+                window.alert("Please Select  Client Invoice Group .");
+                Invoice.focus();
+                return false;
+            }
+
             return true;
         }
+
+
+        
+
+
+        
+            
+          /*  $("form[name='ProjectDetails']").validate({*/
+                
+                //rules: {
+
+                //    CustomerName: "required";
+                //    ProjectName: "required";
+                //    ProjectId: "required";
+                //}
+                
+                //messages: {
+                //    CustomerName: "Please enter your Name";
+                //    ProjectName: "Please enter your Project Name";
+                //    ProjectId: "Please enter your Project ID";
+
+                //}
+              
+                //submitHandler: function IsValidate() {
+                //    form.submit();
+                //}
+           
+        
+
+
+
         function SaveData() {
             let vm = {
-                Name: "",
+
                 CustomerName: "",
                 ProjectName: "",
                 ProjectId: "",
                 Start_Date: "",
                 End_Date: "",
-                CompanyId: 0,
-                ProjectStatus: 0,
-                //LocationGroup: 0,
-                //PayRollState:0
+                ProjectStatus: "",
+                ProjectType: "",
+                ProjectCategory: "",
+                LocationGroup: "",
+                PayRollState: "",
+                SalesPersonName: "",
+                SubDomain: "",
+                TimeSheetRepresentative: "",
+                TimesheetType: "",
+                PracticeType: "",
+                Recruiter: "",
+                InvoiceGroup: "",
+                IsVMs: ""
+
             };
-            vm.Name = $("#empName").val();
+
             vm.CustomerName = $("#CustomerName").val();
             vm.ProjectName = $("#ProjectName").val();
             vm.ProjectId = $("#ProjectId").val();
             vm.Start_Date = $("#Start_Date").val();
             vm.End_Date = $("#End_Date").val();
-            vm.CompanyId = $("#workingCompany").val();
-            vm.ProjectStatus = $("#ddlProjectStatus").val();
-            //vm.LocationGroup = $("#ddlLocationGroup").val();
-            //vm.PayRollState = $("#ddlPayRollState").val();
+            vm.ProjectStatus = $("#ddlProjectStatus option:selected").text();
+            vm.LocationGroup = $("#ddlLocationGroup option:selected").text();
+            vm.PayRollState = $("#ddlPayRollState option:selected").text();
+            vm.ProjectType = $("#ddlProjectType option:selected").text();
+            vm.SalesPersonName = $("#ddlSalesPersonName option:selected").text();
+            vm.ProjectCategory = $("#ddlProjectCategory option:selected").text();
+            vm.SubDomain = $("#ddlSubDomain option:selected").text();
+            vm.TimeSheetRepresentative = $("#ddlTimeSheetRepresentative option:selected").text();
+            vm.TimeSheetType = $("#ddlTimesheetType option:selected").text();
+            vm.PracticeType = $("#ddlPracticeType option:selected").text();
+            vm.Recruiter = $("#ddlRecruiter option:selected").text();
+            vm.InvoiceGroup = $("#ddlInvoiceGroup option:selected").text();
+            vm.IsVMs = $("#ddlIsVms1").val();
+
+        
 
             console.log(vm);
 
+
             $.ajax({
                 method: "POST",
-                url: "/sample/project",
+                url: "/ProjectApi/Add",
                 dataType: "json",
                 data: vm,
                 success: function () { },
                 error: function () { }
             });
+
 
         }
 
@@ -197,12 +402,14 @@
         function BindProjectStatusList() {
             $.ajax({
                 method: "GET",
-                url: "/sample/GetAppRefData?parentId=1800",
+                url: "/ProjectApi/GetAppRefData?parentId=1800",
                 success: function (data) {
                     console.log(data);
-
-                    //ddlProjectstatus
+                    $(data).each(function () {
+                        $("#ddlProjectStatus").append($("<option></option>").val(this.keyId).html(this.keyName));
+                    });
                 },
+
                 error: function () { }
             });
 
@@ -210,9 +417,261 @@
 
 
 
+        function BindProjectTypeList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetProjectType?parentId=4650",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlProjectType").append($("<option></option>").val(this.keyId).html(this.keyName));
+                    });
+                },
+
+
+                error: function () { }
+            })
+        }
+
+
+
+        function BindProjectCategoryList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetProjectCategory?parentId=19491",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlProjectCategory").append($("<option></option>").val(this.keyId).html(this.keyName));
+                    });
+                },
+
+
+
+                error: function () { }
+            })
+        }
+
+
+
+
+        function BindClientInvoiceGroupList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetClientInvoiceGroup?parentId=10300",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlInvoiceGroup").append($("<option></option>").val(this.keyId).html(this.keyName));
+                    });
+                },
+
+
+
+                error: function () { }
+            })
+        }
+
+
+
+
+        function BindTimeSheetTypeList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetTimeSheetType?parentId=13120",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlTimesheetType").append($("<option></option>").val(this.keyId).html(this.keyName));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
+
+
+        function BindPracticeTypeList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetPracticeType?parentId=15760",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlPracticeType").append($("<option></option>").val(this.keyId).html(this.keyName));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
+
+        function BindRecruiterList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetRecruiters",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlRecruiter").append($("<option></option>").val(this.id).html(this.name));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
+        function BindDomainList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetDomains",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlSubDomain").append($("<option></option>").val(this.id).html(this.name));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
+
+
+
+        function BindLocationList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetLocation",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlLocationGroup").append($("<option></option>").val(this.id).html(this.name));
+                    });
+                },
+
+
+                error: function () { }
+            });
+
+        }
+
+
+        function BindTimeSheetRepList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetTimeSheetRep",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlTimeSheetRepresentative").append($("<option></option>").val(this.id).html(this.name));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
+
+        function BindSalesPersonList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetSalesPerson",
+
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlSalesPersonName").append($("<option></option>").val(this.id).html(this.name));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
+
+        function BindPayRollList() {
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetPayRoll",
+                success: function (data) {
+                    console.log(data);
+                    $(data).each(function () {
+                        $("#ddlPayRollState").append($("<option></option>").val(this.id).html(this.name));
+                    });
+                },
+
+
+
+                error: function () { }
+            });
+
+        }
+
     </script>
 }
 
+
+
+
+
+
+
+
+
+   @*//        rules: {
+        //            CustomerName: "required";
+        //            ProjectName: "required";
+        //            ProjectId: "required";
+        //            Start_Date: "required";
+        //            End_Date: "required";
+
+        //        }
+
+        //    messages: {
+        //        CustomerName: "Please fill Customer  name";
+        //        ProjectName: "Please fill Project name";
+        //        ProjectId: "Please fill Project Id";
+        //        Start_Date: "PLease select Start Date";
+        //        End_Date: "PLease select Start Date";
+
+        //        }
+
+        //        return true,
+
+        //};*@
+
+
+@*submitHandler: function(form) {
+        $.ajax({
+            url: form.action,
+            type: form.method,
+            data: $(form).serialize(),
+            success: function(response) {
+                $('#answers').html(response);
+            }
+        });
+    }*@
 
 
 

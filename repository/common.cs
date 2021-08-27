@@ -185,19 +185,93 @@ namespace WebApplication2.repository
         }
 
 
-        //public DataSet GetList(ProjectAddEditView pmodel)
-        //{
 
-        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DbConnection"].ToString());
-        //    SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    SqlDataAdapter da = new SqlDataAdapter();
-        //    da.SelectCommand = cmd;
-        //    DataSet myrec = new DataSet();
-        //    da.Fill(myrec);
-        //    return myrec;
+        //public IList<Project> GetProjectsList()
+        //{
+        //    IList<Project> SelectListNew = new List<Project>();
+
+        //    using (SqlConnection con = new SqlConnection())
+        //    {
+        //        con.Open();
+        //        SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+        //        {
+        //            DataSet ds = new DataSet();
+        //            da.Fill(ds);
+        //        }
+        //        con.Close();
+        //    }
+        //    return SelectListNew;
         //}
 
-      
+
+
+
+
+
+        public List<Project> GetProjectsList()
+        {
+            DataSet ds = new DataSet();
+            List<Project> SelectListNew = new List<Project>();
+            Connection();
+            SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                da.Fill(ds);
+            }
+            if (ds.Tables.Count > 0)
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    Project obj = new Project();
+                    obj.CustomerName = Convert.ToString(ds.Tables[0].Rows[i]["CustumerName"]);
+                    obj.ProjectName = Convert.ToString(ds.Tables[0].Rows[i]["ProjectName"]);
+                    obj.ProjectId = Convert.ToInt32(ds.Tables[0].Rows[i]["ProjectId"]);
+                    //obj.SD = Convert.ToDateTime(ds.Tables[0].Rows[i]["Start_Date"]);
+                    //obj.ED = Convert.ToDateTime(ds.Tables[0].Rows[i]["End_Date"]);
+                    obj.ProjectStatus = Convert.ToInt32(ds.Tables[0].Rows[i]["ProjectStatus"]);
+                    obj.LocationGroup = Convert.ToInt32(ds.Tables[0].Rows[i]["LocactionGroup"]);
+                    obj.PayRollState = Convert.ToInt32(ds.Tables[0].Rows[i]["PayRollState"]);
+                    obj.SalesPerson = Convert.ToInt32(ds.Tables[0].Rows[i]["SalesPerson"]);
+                    obj.ProjectCategory = Convert.ToInt32(ds.Tables[0].Rows[i]["ProjectCategory"]);
+                    obj.ProjectType = Convert.ToInt32(ds.Tables[0].Rows[i]["ProjectType"]);
+                    obj.SubDomain = Convert.ToInt32(ds.Tables[0].Rows[i]["SubDomain"]);
+                    obj.TimeSheetRepresentative = Convert.ToInt32(ds.Tables[0].Rows[i]["TimeSheetRepresentative"]);
+                    obj.ClientInvoiceGroup = Convert.ToInt32(ds.Tables[0].Rows[i]["ClientInvoiceGroup"]);
+                    obj.TimeSheetType = Convert.ToInt32(ds.Tables[0].Rows[i]["TimeSheetType"]);
+                    //obj.IVT = Convert.ToInt32(ds.Tables[0].Rows[i]["IsVMS"]);
+                    obj.PracticeType = Convert.ToInt32(ds.Tables[0].Rows[i]["PracticeType"]);
+                    obj.Recruiter = Convert.ToInt32(ds.Tables[0].Rows[i]["Recruiter"]);
+                    SelectListNew.Add(obj);
+                }
+            }
+     
+            return SelectListNew;
+        }
+
+
+
+
+
+
+
+
+        public DataSet GetList(ProjectAddEditView pmodel)
+        {
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DbConnection"].ToString());
+            SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet myrec = new DataSet();
+            da.Fill(myrec);
+            return myrec;
+        }
+
+
     }
 }
