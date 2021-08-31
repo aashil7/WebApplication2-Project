@@ -35,50 +35,50 @@ namespace WebApplication2.Models
 
 
         [Required(ErrorMessage = "Please Select Project Status")]
-        public int? ProjectStatus { get; set; }
+        public string ProjectStatus { get; set; }
 
 
 
         [Required(ErrorMessage = "Please Select Location Group")]
-        public int? LocationGroup { get; set; }
+        public string LocationGroup { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Payroll State")]
-        public int? PayRollState { get; set; }
+        public string PayRollState { get; set; }
 
         [Required(ErrorMessage = "Please Select Sales Person")]
-        public int? SalesPerson { get; set; }
+        public string SalesPerson { get; set; }
 
         [Required(ErrorMessage = "Please Select ProjectCategory")]
-        public int? ProjectCategory { get; set; }
+        public string ProjectCategory { get; set; }
 
         [Required(ErrorMessage = "Please Select Project Type")]
-        public int? ProjectType { get; set; }
+        public string ProjectType { get; set; }
 
         [Required(ErrorMessage = "Please Select Sub Domain")]
-        public int? SubDomain { get; set; }
+        public string SubDomain { get; set; }
 
         [Required(ErrorMessage = "Please Select Timesheet Representative")]
-        public int? TimeSheetRepresentative { get; set; }
+        public string TimeSheetRepresentative { get; set; }
 
         [Required(ErrorMessage = "Please Select Client Invoice Group")]
-        public int? ClientInvoiceGroup { get; set; }
+        public string ClientInvoiceGroup { get; set; }
 
         [Required(ErrorMessage = "Please Select TimeSheet Type")]
-        public int? TimeSheetType { get; set; }
+        public string TimeSheetType { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide VMS Timesheet")]
-        public int? IsVMSTimeSheet { get; set; }
+        public string IsVMSTimeSheet { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Practice Type")]
-        public int? PracticeType { get; set; }
+        public string PracticeType { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Recruiter")]
-        public int? Recruiter { get; set; }
+        public string Recruiter { get; set; }
 
 
-        
+
     }
 }

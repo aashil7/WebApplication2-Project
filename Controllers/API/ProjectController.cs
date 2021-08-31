@@ -16,6 +16,8 @@ namespace WebApplication2.Controllers.API
             return Ok();
         }
 
+       
+
 
 
         [HttpGet]
@@ -149,6 +151,10 @@ namespace WebApplication2.Controllers.API
             var payroll = objRepo.GetPayRoll();
             return Ok(payroll);
         }
+
+
+
+        
 
     }
 }

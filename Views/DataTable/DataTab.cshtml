@@ -68,8 +68,7 @@
             </th>
         </tr>
     </thead>
-    <tbody>
-    </tbody>
+   
     @*<tfoot>
             <tr>
                 <th>Id</th>
@@ -136,18 +135,62 @@
 
             $("#prjList").DataTable({
                 ajax: {
-                    url: "/ProjectApi/GetAppRefData?parentid=4650",
-                    
+                    url: "/ProjectApi/GetAppRefData?parentId=1800",
                     dataSrc: ""
                 },
                 columns: [
                     {
-                        data: "keyId"
+                        data: "CustomerName"
                     },
                     {
-                        data: "keyName",
-                     /*   render: function (data) { return "Ye naam hai:" + data }*/
+                        data: "ProjectName",
+                        /*   render: function (data) { return "Ye naam hai:" + data }*/
                     }],
+                    //{
+                    //    data:"Start_Date",
+                    //},
+                    //{
+                    //    data: "End_Date",
+                    //},
+                    //{
+                    //    data: "ProjectStatus",
+                    //},
+                    //{
+                    //    data: "LocationGroup",
+                    //},
+                    //{
+                    //    data: "PayRollState",
+                    //},
+                    //{
+                    //    data: "SalesPerson",
+                    //},
+                    //{
+                    //    data: "ProjectCategory",
+                    //},
+                    //{
+                    //    data: "ProjectType",
+                    //},
+                    //{
+                    //    data: "SubDomain",
+                    //},
+                    //{
+                    //    data: "TimeSheetRepresentative",
+                    //},
+                    //{
+                    //    data: "ClientInvoiceGroup",
+                    //},
+                    //{
+                    //    data: "TimeSheetType",
+                    //},
+                    //{
+                    //    data: "IsVMSTimeSheet",
+                    //},
+                    //{
+                    //    data: "PracticeType",
+                    //},
+                    //{
+                    //    data: "Recruiter",
+                    //}],
              
   
           
@@ -159,18 +202,3 @@
 }
 
 
-    @*$("#prjList").DataTable({
-            ajax: {
-                url: "/ ProjectApi/GetProjectType?parentId = 4650",
-                dataSrc: ""
-            },
-            columns: [
-                        {
-                            data:"keyId"
-                        },
-                        {
-                            data: "KeyName"
-                        },
-                        {
-                            data:"ProjectId"
-                        }]*@
