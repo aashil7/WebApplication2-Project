@@ -35,9 +35,9 @@ namespace WebApplication2.Controllers
         }
 
 
-        public ActionResult project()
+        public ActionResult DataTable()
         {
-            ViewBag.Title = "SampleAdd";
+            ViewBag.Title = "DataTab";
             return View();
         }
     }

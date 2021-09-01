@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewBag.Title = "DataTab";
 }
@@ -7,10 +8,10 @@
 <h2>Projects List</h2>
 
 <table id="prjList" class="table-bordered table-striped">
-   
+
     <thead>
         <tr>
-        
+
             <th>CustumerName</th>
 
             <th>
@@ -66,12 +67,71 @@
             </th>
         </tr>
 
-      
+
     </thead>
-   
+
+    <tfoot>
+        <tr>
+
+            <th>CustumerName</th>
+
+            <th>
+                ProjectName
+            </th>
+            <th>
+                ProjectId
+            </th>
+            <th>
+                Start_Date
+            </th>
+            <th>
+                End_Date
+            </th>
+            <th>
+                ProjectStatus
+            </th>
+            <th>
+                LocationGroup
+            </th>
+            <th>
+                PayRollState
+            </th>
+            <th>
+                SalesPerson
+            </th>
+            <th>
+                ProjectCategory
+            </th>
+            <th>
+                ProjectType
+            </th>
+            <th>
+                SubDomain
+            </th>
+            <th>
+                TimeSheetRepresentative
+            </th>
+            <th>
+                ClientInvoieGroup
+            </th>
+            <th>
+                TimeSheetType
+            </th>
+            <th>
+                IsVMSTimeSheet
+            </th>
+            <th>
+                PracticeType
+            </th>
+            <th>
+                Recruiter
+            </th>
+        </tr>
+    </tfoot>
 
 
-   
+
+
 </table>
 
 @section scripts{
@@ -84,68 +144,68 @@
                 ajax: {
                     url: "/ProjectApi/GetProjectsList",
                     dataSrc: ""
-                    
+
                 },
                 columns: [
                     {
-                        data: "CustumerName"
+                        data: "customerName"
                     },
                     {
-                        data: "ProjectName",
-                          render: function (data) { return "Ye naam hai:" + data }
+                        data: "projectName"
+                        /*   render: function (data) { return "Ye naam hai:" + data }*/
                     },
                     {
-                        data: "ProjectId"
+                        data: "projectId"
                     },
                     {
-                        data:"Start_Date",
+                        data:"start_Date"
                     },
                     {
-                        data: "End_Date",
+                        data: "end_Date"
                     },
                     {
-                        data: "ProjectStatus",
+                        data: "projectStatus"
                     },
                     {
-                        data: "LocationGroup",
+                        data: "locationGroup"
                     },
                     {
-                        data: "PayRollState",
+                        data: "payRollState"
                     },
                     {
-                        data: "SalesPerson",
+                        data: "salesPerson"
                     },
                     {
-                        data: "ProjectCategory",
+                        data: "projectCategory"
                     },
                     {
-                        data: "ProjectType",
+                        data: "projectType"
                     },
                     {
-                        data: "SubDomain",
+                        data: "subDomain"
                     },
                     {
-                        data: "TimeSheetRepresentative",
+                        data: "timeSheetRepresentative"
                     },
                     {
-                        data: "ClientInvoieGroup",
+                        data: "clientInvoiceGroup"
                     },
                     {
-                        data: "TimeSheetType",
+                        data: "timeSheetType"
                     },
                     {
-                        data: "IsVMSTimeSheet",
+                        data: "isVMSTimeSheet"
                     },
                     {
-                        data: "PracticeType",
+                        data: "practiceType"
                     },
                     {
-                        data: "Recruiter",
+                        data: "recruiter"
                     }
                     ]
-             
-  
-          
+
+
+
             });
 
         });

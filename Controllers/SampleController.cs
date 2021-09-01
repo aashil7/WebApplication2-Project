@@ -11,6 +11,7 @@ namespace WebApplication2.Controllers
     public class SampleController : Controller
     {
         private SqlConnection con;
+        
 
         private void Connection()
         {
@@ -100,45 +101,6 @@ namespace WebApplication2.Controllers
         }
 
 
-        //public ActionResult Save(ProjectAddEditView obj)
-        //{
-        //    Connection();
-        //    SqlCommand com = new SqlCommand("Project_Ashil_Training", con);
-        //    com.CommandType = CommandType.StoredProcedure;
-        //    com.Parameters.AddWithValue("@CustomerName", obj.Project.CustomerName);
-        //    com.Parameters.AddWithValue("@ProjectName", obj.Project.ProjectName);
-        //    com.Parameters.AddWithValue("@ProjectId", obj.Project.ProjectId);
-        //    com.Parameters.AddWithValue("@Start_Date", obj.Project.Start_Date);
-        //    com.Parameters.AddWithValue("@End_Date", obj.Project.End_Date);
-        //    com.Parameters.AddWithValue("@ProjectStatus", obj.Project.ProjectStatus);
-        //    com.Parameters.AddWithValue("@LocationGroup", obj.Project.LocationGroup);
-        //    com.Parameters.AddWithValue("@PayRollState", obj.Project.PayRollState);
-        //    com.Parameters.AddWithValue("@SalesPerson", obj.Project.SalesPerson);
-        //    com.Parameters.AddWithValue("@ProjectCategory", obj.Project.ProjectCategory);
-        //    com.Parameters.AddWithValue("@ProjectType", obj.Project.ProjectType);
-        //    com.Parameters.AddWithValue("@SubDomain", obj.Project.SubDomain);
-        //    com.Parameters.AddWithValue("@TimeSheetRepresentative", obj.Project.TimeSheetRepresentative);
-        //    com.Parameters.AddWithValue("@ClientInvoiceGroup", obj.Project.ClientInvoiceGroup);
-        //    com.Parameters.AddWithValue("@TimeSheetType", obj.Project.TimeSheetType);
-        //    com.Parameters.AddWithValue("@IsVMSTimeSheet", obj.Project.IsVMSTimeSheet);
-        //    com.Parameters.AddWithValue("@PracticeType", obj.Project.PracticeType);
-        //    com.Parameters.AddWithValue("@Recruiter", obj.Project.Recruiter);
-
-
-        //    con.Open();
-        //    int i = com.ExecuteNonQuery();
-        //    con.Close();
-        //    if (i >= 1)
-        //    {
-
-        //        return View("DataTab");
-
-        //    }
-
-        //    return View("project");
-
-        //}
-
 
 
 
@@ -151,6 +113,27 @@ namespace WebApplication2.Controllers
         }
 
 
+
+        public ActionResult DataTable()
+        {
+            return View();
+        }
+
+
+        public ActionResult GetDataTable()
+        {
+            return View();
+        }
+
+
+        //public ActionResult DataTab()
+        //{
+        //    var result = new repository.dataTab().GetData();
+        //    return View(result);
+        //}
+
+
+
         public ActionResult project()
         {
          
@@ -159,34 +142,10 @@ namespace WebApplication2.Controllers
 
 
 
-   
-
-
-      
-
-
-        //public ActionResult GetDetails()
-        //{
-        //    //var data = DB.tblStuds.ToList();
-        //    var data = DB.AppRefData.ToList();
-        //    return PartialView(data);
-        //}
 
 
 
-        //public JsonResult GetAppRefData()
-        //{
-        //    return Json("",JsonRequestBehavior.AllowGet);
-        //}
 
-
-
-        //public ActionResult ProjectStatus(int parentId)
-        //{
-        //    common objRepo = new common();
-        //    var appRefStatus = objRepo.GetAppRefData(parentId);
-        //    return View(appRefStatus);
-        //}
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Mvc;
 using WebApplication2.Models;
 
 namespace WebApplication2.repository
@@ -186,29 +187,6 @@ namespace WebApplication2.repository
 
 
 
-        //public IList<Project> GetProjectsList()
-        //{
-        //    IList<Project> SelectListNew = new List<Project>();
-
-        //    using (SqlConnection con = new SqlConnection())
-        //    {
-        //        con.Open();
-        //        SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-        //        {
-        //            DataSet ds = new DataSet();
-        //            da.Fill(ds);
-        //        }
-        //        con.Close();
-        //    }
-        //    return SelectListNew;
-        //}
-
-
-
-
-
 
         public List<Project> GetProjectsList()
         {
@@ -251,6 +229,57 @@ namespace WebApplication2.repository
      
             return SelectListNew;
         }
+
+
+
+
+       
+
+
+
+
+
+        //public List<Project> GetDataTab()
+        //{
+        //    DataSet ds = new DataSet();
+        //    List<Project> SelectListNew = new List<Project>();
+        //    Connection();
+        //    SqlCommand cmd = new SqlCommand("ProjectList_Aashil", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    con.Open();
+        //    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+        //    {
+        //        da.Fill(ds);
+        //    }
+        //    //if (ds.Tables.Count > 0)
+        //    //{
+        //    //    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        //    //    {
+        //    //        Project obj = new Project();
+        //    //        obj.CustomerName = Convert.ToString(ds.Tables[0].Rows[i]["CustumerName"]);
+        //    //        obj.ProjectName = Convert.ToString(ds.Tables[0].Rows[i]["ProjectName"]);
+        //    //        obj.ProjectId = Convert.ToInt32(ds.Tables[0].Rows[i]["ProjectId"]);
+        //    //        obj.Start_Date = Convert.ToString(ds.Tables[0].Rows[i]["Start_Date"]);
+        //    //        obj.End_Date = Convert.ToString(ds.Tables[0].Rows[i]["End_Date"]);
+        //    //        obj.ProjectStatus = Convert.ToString(ds.Tables[0].Rows[i]["ProjectStatus"]);
+        //    //        obj.LocationGroup = Convert.ToString(ds.Tables[0].Rows[i]["LocationGroup"]);
+        //    //        obj.PayRollState = Convert.ToString(ds.Tables[0].Rows[i]["PayRollState"]);
+        //    //        obj.SalesPerson = Convert.ToString(ds.Tables[0].Rows[i]["SalesPerson"]);
+        //    //        obj.ProjectCategory = Convert.ToString(ds.Tables[0].Rows[i]["ProjectCategory"]);
+        //    //        obj.ProjectType = Convert.ToString(ds.Tables[0].Rows[i]["ProjectType"]);
+        //    //        obj.SubDomain = Convert.ToString(ds.Tables[0].Rows[i]["SubDomain"]);
+        //    //        obj.TimeSheetRepresentative = Convert.ToString(ds.Tables[0].Rows[i]["TimeSheetRepresentative"]);
+        //    //        obj.ClientInvoiceGroup = Convert.ToString(ds.Tables[0].Rows[i]["ClientInvoieGroup"]);
+        //    //        obj.TimeSheetType = Convert.ToString(ds.Tables[0].Rows[i]["TimeSheetType"]);
+        //    //        obj.IsVMSTimeSheet = Convert.ToString(ds.Tables[0].Rows[i]["IsVMSTimeSheet"]);
+        //    //        obj.PracticeType = Convert.ToString(ds.Tables[0].Rows[i]["PracticeType"]);
+        //    //        obj.Recruiter = Convert.ToString(ds.Tables[0].Rows[i]["Recruiter"]);
+        //    //        SelectListNew.Add(obj);
+        //    //    }
+        //    //}
+
+        //    return SelectListNew;
+        //}
 
 
 

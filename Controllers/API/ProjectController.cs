@@ -11,12 +11,16 @@ namespace WebApplication2.Controllers.API
 
         [HttpPost]
         [Route("ProjectApi/Add")]
-        public IHttpActionResult SampleAdd(Project Proj)
+        public IHttpActionResult GetDataTable(ProjectAddEditView Proj)
         {
-            return Ok();
+            dataTab objRepo = new dataTab();
+            var datat = objRepo.GetDataTable(Proj);
+            return Ok(datat);
         }
 
+
        
+
 
 
 
@@ -153,8 +157,15 @@ namespace WebApplication2.Controllers.API
         }
 
 
+        [HttpGet]
+        [Route("ProjectApi/GetProjectsList")]
+        public IHttpActionResult DataTab()
+        {
+            common objRepo = new common();
+            var datatable = objRepo.GetProjectsList();
+            return Ok(datatable);
+        }
 
-        
 
     }
 }

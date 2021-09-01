@@ -5,31 +5,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using WebApplication2.Models;
-using WebApplication2.repository;
 
-namespace WebApplication2.Controllers
+namespace WebApplication2.repository
 {
-    public class DataTableController : Controller
-
+    public class dataTab
     {
         private SqlConnection con;
-
-        // GET: DataTable
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult DataTab()
-        {
-            return View();
-        }
-
-
-       
 
         private void Connection()
         {
@@ -45,7 +28,7 @@ namespace WebApplication2.Controllers
         public bool GetDataTable(ProjectAddEditView obj)
         {
             Connection();
-            SqlCommand com = new SqlCommand("Project_Ashil_Training ", con);
+            SqlCommand com = new SqlCommand("ProjectAdd_Aashil_Training ", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@CustomerName", obj.Project.CustomerName);
             com.Parameters.AddWithValue("@ProjectName", obj.Project.ProjectName);
@@ -85,6 +68,5 @@ namespace WebApplication2.Controllers
 
 
 
-
     }
-}
+    }

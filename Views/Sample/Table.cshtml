@@ -146,21 +146,20 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Recruiter)
+                   
                 </td>
-
+                <td>
+                    @Html.ActionLink("Edit", "Index")
+                </td>
             </tr>
 
         }
-        <tr>
-        <td>
-            @Html.ActionLink("Edit", "Index")
-        </td>
-            </tr>
+    
     </table>
 
     <div>
         @Html.ActionLink("Create", "Index")
-        @*@Html.ActionLink("Edit", "Index")*@
+    
     </div>
 
 
