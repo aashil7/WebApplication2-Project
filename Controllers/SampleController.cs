@@ -142,7 +142,10 @@ namespace WebApplication2.Controllers
 
 
 
-
+        public ActionResult Edit(int ID)
+        {
+            return View("Index");
+        }
 
 
 

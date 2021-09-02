@@ -140,8 +140,8 @@
 
         <div class="form-group">
             <label>Is VMS TimeSheet</label>
-            <input type="radio" id="ddlIsVms1" name="IsVmsTimeSheet" value="Yes"><label for="ddlIsVmsYes">Yes</label>
-            <input type="radio" id="ddlIsVms2" name="IsVmsTimeSheet" value="No"><label for="ddlIsVmsNo">No</label>
+            <input type="radio" id="ddlIsVms1" name="IsVMSTimeSheet" value="Yes"><label for="ddlIsVmsYes">Yes</label>
+            <input type="radio" id="ddlIsVms2" name="IsVMSTimeSheet" value="No"><label for="ddlIsVmsNo">No</label>
         </div>
 
 
@@ -178,108 +178,112 @@
 
 
 
-
-    
-    
-
-        function clearMessageJQ(ele) {
-            $(ele).siblings('span.error').remove();
-        }
-
-
-        function addErrorMessageJQ(ele, msg) {
-            const errorCtrl = $('<span />').addClass('error').html(msg);
-            $(ele).closest('div').append(errorCtrl);
-        }
-
-        function CustNameValidation() {
-            let flag = true;
-            const ele = $('#CustomerName');
-            clearMessageJQ(ele)
-            const ProjName = $('#CustomerName').val();
-
-
-            if (ProjName === "" || ProjName.length <= 2 || !isNaN(ProjName.split('')[0])) {
-                addErrorMessageJQ(ele, 'Please fill the Customer Name');
-                console.log(ProjName);
-                flag = false;
-            } else {
-                flag = true;
-            }
-            return flag;
-        }
-
-        function ProjNameValidation() {
-            let flag = true;
-            const ele = $('#ProjectName');
-            clearMessageJQ(ele)
-            const ProjName = $('#ProjectName').val();
-
-
-            if (ProjName === "" || ProjName.length <= 2 || !isNaN(ProjName.split('')[0])) {
-                addErrorMessageJQ(ele, 'Please fill the Project Name');
-                console.log(ProjName);
-                flag = false;
-            } else {
-                flag = true;
-            }
-            return flag;
-        }
-
-        function StartDateValidation() {
-            let flag = true;
-            const ele = $('#Start_Date');
-            clearMessageJQ(ele)
-            const ProjName = $('#Start_Date').val();
-
-
-            if (ProjName === "") {
-                addErrorMessageJQ(ele, 'Please Select the Start Date');
-                console.log(ProjName);
-                flag = false;
-            } else {
-                flag = true;
-            }
-            return flag;
-        }
-
-
-        function ProjStatusValidation() {
-            let flag = true;
-            const ele = $('#ddlProjectStatus');
-            clearMessageJQ(ele)
-            const ProjName = $('#ddlProjectStatus').val();
-
-
-            if (ProjName === "Select Project Status") {
-                addErrorMessageJQ(ele, 'Please Select the Project Status');
-                console.log(ProjName);
-                flag = false;
-            } else {
-                flag = true;
-            }
-            return flag;
-        }
-
-
-
-
-
         function IsValidate() {
-            if (!CustNameValidation()) {
-                flag = false;
-            }
-            if (!ProjNameValidation()) {
-                flag = false;
-            }
-            if (!StartDateValidation()) {
-                flag = false;
-            }
-            if (!ProjStatusValidation()) {
-                flag = false;
-            }
-            return flag;
+            return true;
         }
+
+    
+    
+
+        //function clearMessageJQ(ele) {
+        //    $(ele).siblings('span.error').remove();
+        //}
+
+
+        //function addErrorMessageJQ(ele, msg) {
+        //    const errorCtrl = $('<span />').addClass('error').html(msg);
+        //    $(ele).closest('div').append(errorCtrl);
+        //}
+
+        //function CustNameValidation() {
+        //    let flag = true;
+        //    const ele = $('#CustomerName');
+        //    clearMessageJQ(ele)
+        //    const ProjName = $('#CustomerName').val();
+
+
+        //    if (ProjName === "" || ProjName.length <= 2 || !isNaN(ProjName.split('')[0])) {
+        //        addErrorMessageJQ(ele, 'Please fill the Customer Name');
+        //        console.log(ProjName);
+        //        flag = false;
+        //    } else {
+        //        flag = true;
+        //    }
+        //    return flag;
+        //}
+
+        //function ProjNameValidation() {
+        //    let flag = true;
+        //    const ele = $('#ProjectName');
+        //    clearMessageJQ(ele)
+        //    const ProjName = $('#ProjectName').val();
+
+
+        //    if (ProjName === "" || ProjName.length <= 2 || !isNaN(ProjName.split('')[0])) {
+        //        addErrorMessageJQ(ele, 'Please fill the Project Name');
+        //        console.log(ProjName);
+        //        flag = false;
+        //    } else {
+        //        flag = true;
+        //    }
+        //    return flag;
+        //}
+
+        //function StartDateValidation() {
+        //    let flag = true;
+        //    const ele = $('#Start_Date');
+        //    clearMessageJQ(ele)
+        //    const ProjName = $('#Start_Date').val();
+
+
+        //    if (ProjName === "") {
+        //        addErrorMessageJQ(ele, 'Please Select the Start Date');
+        //        console.log(ProjName);
+        //        flag = false;
+        //    } else {
+        //        flag = true;
+        //    }
+        //    return flag;
+        //}
+
+
+        //function ProjStatusValidation() {
+        //    let flag = true;
+        //    const ele = $('#ddlProjectStatus');
+        //    clearMessageJQ(ele)
+        //    const ProjName = $('#ddlProjectStatus').val();
+
+
+        //    if (ProjName === "Select Project Status") {
+        //        addErrorMessageJQ(ele, 'Please Select the Project Status');
+        //        console.log(ProjName);
+        //        flag = false;
+        //    } else {
+        //        flag = true;
+        //    }
+        //    return flag;
+        //}
+
+    
+     
+
+
+
+        //function IsValidate() {
+        //    if (!CustNameValidation()) {
+        //        flag = false;
+        //    }
+        //    if (!ProjNameValidation()) {
+        //        flag = false;
+        //    }
+        //    if (!StartDateValidation()) {
+        //        flag = false;
+        //    }
+        //    if (!ProjStatusValidation()) {
+        //        flag = false;
+        //    }
+        //    return flag;
+        //}
 
    
 
@@ -447,14 +451,14 @@
                 ProjectCategory: "",
                 LocationGroup: "",
                 PayRollState: "",
-                SalesPersonName: "",
+                SalesPerson: "",
                 SubDomain: "",
                 TimeSheetRepresentative: "",
-                TimesheetType: "",
+                TimeSheetType: "",
                 PracticeType: "",
                 Recruiter: "",
-                InvoiceGroup: "",
-                IsVMs: ""
+                ClientInvoiceGroup: "",
+                IsVMSTimeSheet: ""
 
             };
 
@@ -463,19 +467,19 @@
             Project.ProjectId = $("#ProjectId").val();
             Project.Start_Date = $("#Start_Date").val();
             Project.End_Date = $("#End_Date").val();
-            Project.ProjectStatus = $("#ddlProjectStatus option:selected").text();
-            Project.LocationGroup = $("#ddlLocationGroup option:selected").text();
-            Project.PayRollState = $("#ddlPayRollState option:selected").text();
-            Project.ProjectType = $("#ddlProjectType option:selected").text();
-            Project.SalesPersonName = $("#ddlSalesPersonName option:selected").text();
-            Project.ProjectCategory = $("#ddlProjectCategory option:selected").text();
-            Project.SubDomain = $("#ddlSubDomain option:selected").text();
-            Project.TimeSheetRepresentative = $("#ddlTimeSheetRepresentative option:selected").text();
-            Project.TimeSheetType = $("#ddlTimesheetType option:selected").text();
-            Project.PracticeType = $("#ddlPracticeType option:selected").text();
-            Project.Recruiter = $("#ddlRecruiter option:selected").text();
-            Project.InvoiceGroup = $("#ddlInvoiceGroup option:selected").text();
-            Project.IsVMs = $("#ddlIsVms1").val();
+            Project.ProjectStatus = $("#ddlProjectStatus ").val();
+            Project.LocationGroup = $("#ddlLocationGroup ").val();
+            Project.PayRollState = $("#ddlPayRollState ").val();
+            Project.ProjectType = $("#ddlProjectType ").val();
+            Project.SalesPerson = $("#ddlSalesPersonName ").val();
+            Project.ProjectCategory = $("#ddlProjectCategory ").val();
+            Project.SubDomain = $("#ddlSubDomain ").val();
+            Project.TimeSheetRepresentative = $("#ddlTimeSheetRepresentative ").val();
+            Project.TimeSheetType = $("#ddlTimesheetType ").val();
+            Project.PracticeType = $("#ddlPracticeType ").val();
+            Project.Recruiter = $("#ddlRecruiter ").val();
+            Project.ClientInvoiceGroup = $("#ddlInvoiceGroup ").val();
+            Project.IsVMSTimeSheet = $("input[name='IsVMSTimeSheet']:checked").val();
 
 
 
@@ -484,7 +488,7 @@
 
             $.ajax({
                 method: "POST",
-                url: "/ProjectApi/Add",
+                url: "/ProjectApi/AddTable",
                 dataType: "json",
                 data: Project,
                 success: function () { },
