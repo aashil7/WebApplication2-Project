@@ -19,7 +19,7 @@ namespace WebApplication2.Controllers.API
         }
 
 
-       
+
 
 
 
@@ -165,6 +165,38 @@ namespace WebApplication2.Controllers.API
             var datatable = objRepo.GetProjectsList();
             return Ok(datatable);
         }
+
+
+        //[HttpPost]
+        //[Route("ProjectApi/GetEmpData")]
+        //public IHttpActionResult Retrieve()
+        //{
+        //    dataTab objRepo = new dataTab();
+        //    var retre = objRepo.GetEmpData();
+        //    return Ok(retre);
+        //}
+
+
+
+        //[HttpPost]
+        //[Route("ProjectApi/GetEdit")]
+        //public IHttpActionResult Edittab(int Id)
+        //{
+        //    dataTab objRep = new dataTab();
+        //    var editt = objRep.Edit(Id);
+        //    return Ok(editt);
+        //}
+       
+
+        //[HttpPost]
+        //[Route("ProjectApi/GetUpdate")]
+        //public IHttpActionResult Updatetab(Project obj)
+        //{
+        //    dataTab objRepos = new dataTab();
+        //    var updt = objRepos.Update(obj);
+        //    return Ok(updt);
+        //}
+
 
 
     }

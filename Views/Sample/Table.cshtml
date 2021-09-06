@@ -34,11 +34,15 @@
 
         <thead>
             <tr>
+
                 <th>
                     @Html.DisplayNameFor(model => model.CustomerName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.ProjectName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProjectId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Start_Date)
@@ -85,8 +89,11 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Recruiter)
                 </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>*@
                 <th>
-                    Editing 
+                    Editing
                 </th>
             </tr>
         </thead>
@@ -95,65 +102,72 @@
         @foreach (var item in Model)
 
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerName)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
 
-                </td>
+        </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Start_Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.End_Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationGroup)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PayRollState)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SalesPerson)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectCategory)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubDomain)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimeSheetRepresentative)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientInvoiceGroup)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimeSheetType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsVMSTimeSheet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PracticeType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Recruiter)
-                   
-                </td>
-                <td>
-                    @Html.ActionLink("Edit" , "Index")
-                </td>
-            </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayRollState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesPerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubDomain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeSheetRepresentative)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientInvoiceGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeSheetType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsVMSTimeSheet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PracticeType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recruiter)
+
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ID)
+
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProjectId })
+        </td>
+    </tr>
 
         }
     

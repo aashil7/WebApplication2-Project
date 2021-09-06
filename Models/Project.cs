@@ -79,6 +79,6 @@ namespace WebApplication2.Models
         public string Recruiter { get; set; }
 
 
-
+        //public int ID { get; set; }
     }
 }

@@ -4,13 +4,14 @@ using System.Web.Mvc;
 using WebApplication2.Models;
 using WebApplication2.repository;
 using System.Configuration;
-
+using System.Web.Services;
+using Newtonsoft.Json;
 
 namespace WebApplication2.Controllers
 {
     public class SampleController : Controller
     {
-        private SqlConnection con;
+        public SqlConnection con;
         
 
         private void Connection()
@@ -104,6 +105,16 @@ namespace WebApplication2.Controllers
 
 
 
+    
+
+
+
+
+
+
+
+
+
 
 
         public ActionResult Table()
@@ -142,11 +153,32 @@ namespace WebApplication2.Controllers
 
 
 
-        public ActionResult Edit(int ID)
+        public ActionResult Edit()
         {
-            return View("Index");
+          
+            return View("Edit");
         }
 
+
+        //public ActionResult Retrieve()
+        //{
+        //    var results = new repository.dataTab().GetEmpData();
+        //    return View(results);
+        //}
+
+
+        //public ActionResult Edittab(int Id)
+        //{
+        //    var results = new repository.dataTab().Edit(Id);
+        //    return View(results);
+        //}
+
+
+        //public ActionResult updateTab(Project obj)
+        //{
+        //    var resultsup = new repository.dataTab().Update(obj);
+        //    return View(resultsup);
+        //}
 
 
 

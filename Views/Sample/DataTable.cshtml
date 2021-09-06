@@ -7,7 +7,42 @@
 
 <h2>Projects List</h2>
 
+<div class="col-md-3">
+    <div class="form-group">
+        <label>Project Type </label>
+        <select id="ddlProjectType" class="form-control">
+            <option value="" disabled selected hidden>Select Project Type</option>
+        </select>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="form-group">
+        <label>Practice Type </label>
+        <select id="ddlPracticeType" class="form-control">
+            <option value="" disabled selected hidden>Select Project Type</option>
+        </select>
+    </div>
+</div>
+
+
+<div class="col-md-3">
+    <label>Search</label>
+    <input class="form-control" type="text" id="Search" />
+</div>
+
+<div>
+    <input type="button" value="Submit" id="btnSave" />
+    </div>
+
+
+
+
 <table id="prjList" class="table-bordered table-striped">
+
+
+
+
 
     <thead>
         <tr>
@@ -65,10 +100,23 @@
             <th>
                 Recruiter
             </th>
+
+
+            <th></th>
+
+
+
         </tr>
 
 
+
+
+
+
     </thead>
+
+
+
 
     <tfoot>
         <tr>
@@ -126,6 +174,11 @@
             <th>
                 Recruiter
             </th>
+
+
+            <th></th>
+
+
         </tr>
     </tfoot>
 
@@ -136,7 +189,51 @@
 
 @section scripts{
     <script>
-       /* const { document } = require("jquery");*/
+        /* const { document } = require("jquery");*/
+
+        $(document).ready(function () {
+            BindProjectTypeList();
+            BindPracticeTypeList();
+            $("#btnSave").on("click", function () {
+            });
+
+
+
+            function BindProjectTypeList() {
+                $.ajax({
+                    method: "GET",
+                    url: "/ProjectApi/GetProjectType?parentId=4650",
+                    success: function (data) {
+                        console.log(data);
+                        $(data).each(function () {
+                            $("#ddlProjectType").append($("<option></option>").val(this.keyId).html(this.keyName));
+                        });
+                    },
+
+
+                    error: function () { }
+                })
+            }
+
+
+            function BindPracticeTypeList() {
+                $.ajax({
+                    method: "GET",
+                    url: "/ProjectApi/GetPracticeType?parentId=15760",
+                    success: function (data) {
+                        console.log(data);
+                        $(data).each(function () {
+                            $("#ddlPracticeType").append($("<option></option>").val(this.keyId).html(this.keyName));
+                        });
+                    },
+
+
+
+                    error: function () { }
+                });
+
+            }
+        })
 
         $(document).ready(function () {
 
@@ -146,6 +243,9 @@
                     dataSrc: ""
 
                 },
+
+
+
                 columns: [
                     {
                         data: "customerName"
@@ -158,7 +258,7 @@
                         data: "projectId"
                     },
                     {
-                        data:"start_Date"
+                        data: "start_Date"
                     },
                     {
                         data: "end_Date"
@@ -201,14 +301,57 @@
                     },
                     {
                         data: "recruiter"
+                    },
+                    {
+                        render: function (data, type, row) {
+                            return createButton('edit', row.Id);
+                        }
                     }
-                    ]
+                ]
 
 
 
             });
 
+
         });
+
+        function createButton(buttonType, rowId) {
+            var buttonText = buttonType == "edit" ? "Edit" : "project";
+            return '<button class="Edit"' + buttonType + '" type="button">' + buttonText + '</button>';
+        }
+
+
+       
+
+                                            //$("#prjList").on('click', 'tbody td .edit', function (e) {
+                                            //    fnResetControls();
+                                            //    var dataTable = $("#prjList").DataTable();
+                                            //    var clickedRow = $($(this).closest('td')).closest('tr');
+                                            //    $(clickedRow).find('td').each(function () {
+                                            //        // do your cool stuff
+                                            //        if ($(this).hasClass('editable')) {
+                                            //            if ($(this).hasClass('text')) {
+                                            //                var html = fnCreateTextBox($(this).html(), 'name');
+                                            //                $(this).html($(html))
+                                            //            }
+                                            //        }
+                                            //    });
+
+
+                                            //    $('#dtExample tbody tr td .update').removeClass('update').addClass('edit').html('Edit');
+                                            //    $('#dtExample tbody tr td .cancel').removeClass('cancel').addClass('delete').html('Delete');
+                                            //    $(clickedRow).find('td .edit').removeClass('edit').addClass('update').html('Update');
+                                            //    $(clickedRow).find('td .delete').removeClass('delete').addClass('cancel').html('Cancel');
+
+                                            //});
+
+                                            //function fnCreateTextBox(value, fieldprop) {
+                                            //    return '<input data-field="' + fieldprop + '" type="text" value="' + value + '" ></input>';
+                                            //}
+
+
+
 
     </script>
 }
