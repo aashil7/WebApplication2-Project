@@ -17,7 +17,7 @@ namespace WebApplication2.Models
 
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide ProjectId")]
-        public int? ProjectId { get; set; }
+        public string ProjectId { get; set; }
 
 
 

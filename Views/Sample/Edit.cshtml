@@ -176,7 +176,7 @@
                 }
 
 
-                //GetData();
+        
 
             });
       
@@ -336,7 +336,7 @@
 
             console.log(Project);
 
-           /* if ($("#btnsubmit").val() == "Submit") {*/
+            if ($("#btnsubmit").val() == "Submit") {
                 $.ajax({
                     method: "POST",
                     url: "/ProjectApi/AddTable",
@@ -348,72 +348,72 @@
                     error: function () { }
                 });
             }
-            //else
-            //{
-            //    $.ajax({
-            //        url: "/ProjectApi/GetUpdate",
-            //        method: "Post",
-            //        dataType: 'json',
-            //        data: Project,
-            //        success: function () {
-            //            alert("Update data Successfully");
-            //            GetData();
-            //        },
-            //        error: function () {
-            //            alert("Update Error");
-            //        }
+            else {
+                $.ajax({
+                    url: "/ProjectApi/GetUpdate",
+                    method: "Post",
+                    dataType: 'json',
+                    data: Project,
+                    success: function () {
+                        alert("Update data Successfully");
+                        GetData();
+                    },
+                    error: function () {
+                        alert("Update Error");
+                    }
 
-            //    });
-            //}
-
+                });
+            }
 
 
 
 
-        //function GetData() {
-        //    $.ajax({
-        //        url: "/ProjectApi/GetEmpData",
-        //        method: "Post",
-        //        dataType: 'json',
-        //        data: "{}",
-        //        success: function (_data) {
-        //            //_data = JSON.parse(_data.d);
-        //            //$("#tbl").find("tr:gt(0)").remove();
-        //            //for (var i = 0; i < _data.length; i++) {
-        //            //    $("#tbl").append('<tr><td>' + _data[i].EmpName + '</td><td>' + _data[i].EmpAge + '</td><td>' + _data[i].EmpAddress + '</td><td><input type="button" id="btndelete" value="Delete" onclick="DeleteData(' + _data[i].EmpId + ')" /></td>  <td><input type="button" id="btnedit" value="Edit" onclick="EditData(' + _data[i].EmpId + ')" /></td>  </tr>');
-        //            //}
 
-        //        },
-        //        error: function () {
-        //            alert("Get Error");
-        //        }
+            function GetData() {
+                $.ajax({
+                    url: "/ProjectApi/GetEmpData",
+                    method: "Post",
+                    dataType: 'json',
+                    data: "{}",
+                    success: function (_data) {
+                        _data = JSON.parse(_data.d);
+                        $("#tbl").find("tr:gt(0)").remove();
+                        for (var i = 0; i < _data.length; i++) {
+                            $("#tbl").append('<tr><td>' + _data[i].CustomerName + '</td><td>' + _data[i].ProjectName + '</td><td>' + _data[i].ProjectId + '</td><td><input type="button" id="btndelete" value="Delete" onclick="DeleteData(' + _data[i].ProjectId + ')" /></td>  <td><input type="button" id="btnedit" value="Edit" onclick="EditData(' + _data[i].ProjectId + ')" /></td>  </tr>');
+                        }
 
-        //    });
+                    },
+                    error: function () {
+                        alert("Get Error");
+                    }
 
-        //}
+                });
 
-        //function EditData(Id) {
-        //    $.ajax({
-        //        url: "/ProjectApi/GetEdit",
-        //        method: "Post",
+            }
 
-        //        dataType: 'json',
-        //        data: "{Id : '" + ProjectId + "'}",
-        //        success: function (_dt) {
-        //            _dt = JSON.parse(_dt.d);
-        //            //$("#txtName").val(_dt[0].EmpName);
-        //            //$("#txtAddress").val(_dt[0].EmpAddress);
-        //            //$("#txtAge").val(_dt[0].EmpAge);
+            function EditData(Id) {
+                $.ajax({
+                    url: "/ProjectApi/GetEdit",
+                    method: "Post",
 
-        //            //$("#btnsubmit").val("Update");
-        //            //idd = empid;
-        //        },
-        //        error: function () {
-        //            alert('edit error !!');
-        //        }
-        //    });
-        //}
+                    dataType: 'json',
+                    data: "{Id : '" + ProjectId + "'}",
+                    success: function (_dt) {
+                        _dt = JSON.parse(_dt.d);
+                        $("#CustomerName").val(_dt[0].CustomerName);
+                        $("#ProjectName").val(_dt[0].ProjectName);
+                        $("#ProjectId").val(_dt[0].ProjectId);
 
+                        $("#btnsubmit").val("Update");
+                        idd = empid;
+                    },
+                    error: function () {
+                        alert('edit error !!');
+                    }
+                });
+            }
+
+        }
 
 
         function BindProjectStatusList() {

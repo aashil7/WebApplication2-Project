@@ -29,11 +29,12 @@
 <div class="col-md-3">
     <label>Search</label>
     <input class="form-control" type="text" id="Search" />
+    <input type="button" value="Submit" id="btnSave" />
 </div>
 
-<div>
-    <input type="button" value="Submit" id="btnSave" />
-    </div>
+
+    
+    
 
 
 
@@ -195,6 +196,7 @@
             BindProjectTypeList();
             BindPracticeTypeList();
             $("#btnSave").on("click", function () {
+
             });
 
 
@@ -243,6 +245,7 @@
                     dataSrc: ""
 
                 },
+
 
 
 
@@ -304,7 +307,10 @@
                     },
                     {
                         render: function (data, type, row) {
-                            return createButton('edit', row.Id);
+
+
+                            return '<a href="Edit"' + row + '">EDIT</a>'
+                          /*  return createButton('edit', row.Id);*/
                         }
                     }
                 ]
@@ -316,14 +322,7 @@
 
         });
 
-        function createButton(buttonType, rowId) {
-            var buttonText = buttonType == "edit" ? "Edit" : "project";
-            return '<button class="Edit"' + buttonType + '" type="button">' + buttonText + '</button>';
-        }
-
-
-       
-
+    
                                             //$("#prjList").on('click', 'tbody td .edit', function (e) {
                                             //    fnResetControls();
                                             //    var dataTable = $("#prjList").DataTable();
