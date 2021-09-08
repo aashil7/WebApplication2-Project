@@ -167,12 +167,12 @@ namespace WebApplication2.Controllers.API
         }
 
 
-        [HttpPost]
+        [HttpGet]
         [Route("ProjectApi/GetEmpData")]
-        public IHttpActionResult Retrieve()
+        public IHttpActionResult Retrieve(string ProjectId)
         {
             dataTab objRepo = new dataTab();
-            var retre = objRepo.GetEmpData();
+            var retre = objRepo.GetEmpData(ProjectId);
             return Ok(retre);
         }
 

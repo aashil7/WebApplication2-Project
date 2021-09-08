@@ -5,8 +5,10 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Services;
 using WebApplication2.Models;
 
@@ -50,7 +52,7 @@ namespace WebApplication2.repository
             com.Parameters.AddWithValue("@IsVMSTimeSheet", obj.IsVMSTimeSheet);
             com.Parameters.AddWithValue("@PracticeType", obj.PracticeType);
             com.Parameters.AddWithValue("@Recruiter", obj.Recruiter);
-            //com.Parameters.AddWithValue("@ID", obj.ID);
+           
 
             con.Open();
             int i = com.ExecuteNonQuery();
@@ -71,24 +73,74 @@ namespace WebApplication2.repository
 
 
 
-        [WebMethod]
-        public string GetEmpData()
-        {
+        //[WebMethod]
+        //public string GetEmpData()
+        //{
 
-            con.Open();
-            string _data = "";
-            SqlCommand cmd = new SqlCommand("Aashil_ProjectRet", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            con.Close();
-            if (ds.Tables[0].Rows.Count > 0)
+        //    con.Open();
+        //    string _data = "";
+        //    SqlCommand cmd = new SqlCommand("Aashil_ProjectRet", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    DataSet ds = new DataSet();
+        //    da.Fill(ds);
+        //    con.Close();
+        //    if (ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        _data = JsonConvert.SerializeObject(ds.Tables[0]);
+        //    }
+        //    return _data;
+        //}
+
+
+
+
+        [WebMethod]
+        public List<Project> GetEmpData(string ProjectId)
+        {
+          
+            string sqlconnectionstring = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+            List<Project> employeelist = new List<Project>();
+            using (SqlConnection con = new SqlConnection(sqlconnectionstring))
             {
-                _data = JsonConvert.SerializeObject(ds.Tables[0]);
+                SqlCommand cmd = new SqlCommand("Aashil_Edit", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter para = new SqlParameter("@ProjectId", ProjectId);
+                cmd.Parameters.Add(para);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+     
+                {
+                    Project Project = new Project();
+
+
+                    Project.CustomerName = (rdr["CustumerName"].ToString());
+                    Project.ProjectName = (rdr["ProjectName"].ToString());
+                    //Project.ProjectId = Convert.ToString(rdr["ProjectId"]);
+                    Project.Start_Date = (rdr["Start_Date"].ToString());
+                    Project.End_Date = (rdr["End_Date"].ToString());
+                    Project.ProjectStatus = (rdr["ProjectStatus"].ToString());
+                    Project.LocationGroup = (rdr["LocactionGroup"].ToString());
+                    Project.PayRollState = (rdr["PayRollState"].ToString());
+                    Project.SalesPerson = (rdr["SalesPerson"].ToString());
+                    Project.ProjectCategory = (rdr["ProjectCategory"].ToString());
+                    Project.ProjectType = (rdr["ProjectType"].ToString());
+                    Project.SubDomain = (rdr["SubDomain"].ToString());
+                    Project.TimeSheetRepresentative = (rdr["TimeSheetRepresentative"].ToString());
+                    Project.ClientInvoiceGroup = (rdr["ClientInvoiceGroup"].ToString());
+                    Project.TimeSheetType = (rdr["TimeSheetType"].ToString());
+                    Project.IsVMSTimeSheet = (rdr["IsVMSTimeSheet"].ToString());
+                    Project.PracticeType = (rdr["PracticeType"].ToString());
+                    Project.Recruiter = (rdr["Recruiter"].ToString());
+
+                    employeelist.Add(Project);
+                }
             }
-            return _data;
+
+            return employeelist;
         }
+
 
 
 
@@ -157,3 +209,21 @@ namespace WebApplication2.repository
 
     }
 }
+
+
+
+
+
+
+
+//List<Project> employeelist = new List<Project>();
+//string CS = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+//using (SqlConnection con = new SqlConnection(CS))
+//{
+//    SqlCommand cmd = new SqlCommand("Aashil_ProjectRet", con);
+//    cmd.CommandType = CommandType.StoredProcedure;
+//    con.Open();
+
+//    SqlDataReader rdr = cmd.ExecuteReader();
+
+//    while (rdr.Read())

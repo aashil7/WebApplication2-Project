@@ -77,6 +77,7 @@ namespace WebApplication2.Models
 
         [Required(ErrorMessage = "Please Select Recruiter")]
         public string Recruiter { get; set; }
+     
 
 
         //public int ID { get; set; }

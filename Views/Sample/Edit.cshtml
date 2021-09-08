@@ -8,7 +8,9 @@
 <h2>SampleAdd</h2>
 
 
+
 <form name="ProForm">
+
 
     <div class="col-md-6">
         <div class="form-group">
@@ -151,23 +153,36 @@
 @section scripts{
 
     <script>
-        /*const { data } = require("jquery");*/
 
-        $.when(BindProjectStatusList(),
-            BindProjectTypeList(),
-            BindProjectCategoryList(),
-            BindClientInvoiceGroupList(),
-            BindTimeSheetTypeList(),
-            BindPracticeTypeList(),
-            BindRecruiterList(),
-            BindDomainList(),
-            BindLocationList(),
-            BindTimeSheetRepList(),
-            BindSalesPersonList(),
-            BindPayRollList()).done(function () {
+        $(document).ready(function () {
+            $.when(BindProjectStatusList(),
+                BindProjectTypeList(),
+                BindProjectCategoryList(),
+                BindClientInvoiceGroupList(),
+                BindTimeSheetTypeList(),
+                BindPracticeTypeList(),
+                BindRecruiterList(),
+                BindDomainList(),
+                BindLocationList(),
+                BindTimeSheetRepList(),
+                BindSalesPersonList(),
+                BindPayRollList()).done(function () {
+                    console.log("ddlProjectStatus");
+                    console.log("ddlLocationGroup");
+                    console.log("ddlPayRollState");
+                    console.log("ddlProjectType");
+                    console.log("#ddlSalesPersonName");
+                    console.log("ddlProjectCategory");
+                    console.log("ddlSubDomain");
+                    console.log("ddlTimeSheetRepresentative");
+                    console.log("ddlTimesheetType");
+                    console.log("ddlPracticeType");
+                    console.log("ddlRecruiter");
+                    console.log("ddlInvoiceGroup");
 
-                GetData();
-            })
+
+                    GetData();
+                })
 
             $("#btnSave").on("click", function () {
 
@@ -176,10 +191,15 @@
                 }
 
 
-        
-
             });
-      
+
+        });
+
+
+
+
+
+
 
 
 
@@ -336,84 +356,76 @@
 
             console.log(Project);
 
-            if ($("#btnsubmit").val() == "Submit") {
+            if ($("#btnSave").val() == "Submit") {
                 $.ajax({
                     method: "POST",
                     url: "/ProjectApi/AddTable",
                     dataType: "json",
                     data: Project,
                     success: function () {
-                        return true;
+                        alert("The Data is Updated")
+                        window.location.href = "/Sample/DataTable";
                     },
                     error: function () { }
                 });
             }
-            else {
-                $.ajax({
-                    url: "/ProjectApi/GetUpdate",
-                    method: "Post",
-                    dataType: 'json',
-                    data: Project,
-                    success: function () {
-                        alert("Update data Successfully");
-                        GetData();
-                    },
-                    error: function () {
-                        alert("Update Error");
-                    }
+        }
+        //else {
+        //    $.ajax({
+        //        url: "/ProjectApi/GetUpdate",
+        //        method: "Post",
+        //        dataType: 'json',
+        //        data: Project,
+        //        success: function () {
+        //            alert("Update data Successfully");
+        //            GetData();
+        //        },
+        //        error: function () {
+        //            alert("Update Error");
+        //        }
 
-                });
-            }
-
-
-
+        //    });
+        //}
 
 
-            function GetData() {
-                $.ajax({
-                    url: "/ProjectApi/GetEmpData",
-                    method: "Post",
-                    dataType: 'json',
-                    data: "{}",
-                    success: function (_data) {
-                        _data = JSON.parse(_data.d);
-                        $("#tbl").find("tr:gt(0)").remove();
-                        for (var i = 0; i < _data.length; i++) {
-                            $("#tbl").append('<tr><td>' + _data[i].CustomerName + '</td><td>' + _data[i].ProjectName + '</td><td>' + _data[i].ProjectId + '</td><td><input type="button" id="btndelete" value="Delete" onclick="DeleteData(' + _data[i].ProjectId + ')" /></td>  <td><input type="button" id="btnedit" value="Edit" onclick="EditData(' + _data[i].ProjectId + ')" /></td>  </tr>');
-                        }
 
-                    },
-                    error: function () {
-                        alert("Get Error");
-                    }
 
-                });
 
-            }
+        function GetData() {
 
-            function EditData(Id) {
-                $.ajax({
-                    url: "/ProjectApi/GetEdit",
-                    method: "Post",
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetEmpData?ProjectId=9090",
+                success: function (data) {
+                    data = JSON.parse(data.GetData);
 
-                    dataType: 'json',
-                    data: "{Id : '" + ProjectId + "'}",
-                    success: function (_dt) {
-                        _dt = JSON.parse(_dt.d);
-                        $("#CustomerName").val(_dt[0].CustomerName);
-                        $("#ProjectName").val(_dt[0].ProjectName);
-                        $("#ProjectId").val(_dt[0].ProjectId);
-
-                        $("#btnsubmit").val("Update");
-                        idd = empid;
-                    },
-                    error: function () {
-                        alert('edit error !!');
-                    }
-                });
-            }
+                    $("#CustomerName").val(data[0].CustomerName);
+                    $("#ProjectName").val(data[0].ProjectName);
+                    $("#ProjectId").val(data[0].ProjectId);
+                    $("#StartDate").val(data[0].Start_Date);
+                    $("#EndDate").val(data[0].End_Date);
+                    $("#ddlProjectStatus").val(data[0].ProjectStatus(1801));
+                    $("#ddlLocationGroup").val(data[0].LocationGroup);
+                    $("#ddlPayrollState").val(data[0].PayRollState);
+                    $("#ddlSalesPerson").val(data[0].SalesPerson);
+                    $("#ddlProjectCategory").val(data[0].ProjectCategory);
+                    $("#ddlProjectType").val(data[0].ProjectType);
+                    $("#ddlSubDomain").val(data[0].SubDomain);
+                    $("#ddlTimesheetRepresentative").val(data[0].TimeSheetRepresentative);
+                    $("#ddlClientInvoiceGroup").val(data[0].ClientInvoiceGroup);
+                    $("#ddlTimesheetType").val(data[0].TimeSheetType);
+                    $("input[name='IsVmsTimeSheet']:checked").val(data[0].IsVMSTimeSheet);
+                    $("#ddlPracticeType").val(data[0].PracticeType);
+                    $("#ddlRecruiter").val(data[0].Recruiter);
+                    console.log(data);
+                },
+                error: function () { }
+            })
 
         }
+
+
+
 
 
         function BindProjectStatusList() {
@@ -421,7 +433,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetAppRefData?parentId=1800",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlProjectStatus").append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
@@ -439,7 +451,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetProjectType?parentId=4650",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlProjectType").append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
@@ -457,7 +469,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetProjectCategory?parentId=19491",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlProjectCategory").append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
@@ -477,7 +489,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetClientInvoiceGroup?parentId=10300",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlInvoiceGroup").append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
@@ -497,7 +509,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetTimeSheetType?parentId=13120",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlTimesheetType").append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
@@ -517,7 +529,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetPracticeType?parentId=15760",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlPracticeType").append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
@@ -536,7 +548,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetRecruiters",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlRecruiter").append($("<option></option>").val(this.id).html(this.name));
                     });
@@ -554,7 +566,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetDomains",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlSubDomain").append($("<option></option>").val(this.id).html(this.name));
                     });
@@ -575,7 +587,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetLocation",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlLocationGroup").append($("<option></option>").val(this.id).html(this.name));
                     });
@@ -593,7 +605,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetTimeSheetRep",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlTimeSheetRepresentative").append($("<option></option>").val(this.id).html(this.name));
                     });
@@ -613,7 +625,7 @@
                 url: "/ProjectApi/GetSalesPerson",
 
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlSalesPersonName").append($("<option></option>").val(this.id).html(this.name));
                     });
@@ -632,7 +644,7 @@
                 method: "GET",
                 url: "/ProjectApi/GetPayRoll",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(data).each(function () {
                         $("#ddlPayRollState").append($("<option></option>").val(this.id).html(this.name));
                     });
@@ -644,6 +656,21 @@
             });
 
         }
+
+            //function GetData() { }
+                //$("#ddlProjectStatus").val("1801");
+                //$("#ddlLocationGroup").val("1163");
+                //$("#ddlPayRollState").val("802");
+                //$("#ddlProjectType").val("4652");
+                //$("#ddlSalesPersonName").val("4721");
+                //$("#ddlProjectCategory").val("19492");
+                //$("#ddlSubDomain").val("2");
+                //$("#ddlTimeSheetRepresentative").val("113");
+                //$("#ddlTimesheetType").val("13121");
+                //$("#ddlPracticeType").val("15761");
+                //$("#ddlRecruiter").val(77648);
+                //$("#ddlInvoiceGroup").val("10302");
+
 
 
 
@@ -658,21 +685,34 @@
 
 
 
+        @*function GetData() {
+            $.ajax({
+                url: "/ProjectApi/GetEdit?ProjectId=1100",
+                method: "Get",
+
+dataType: 'json',
+                data: "{Id : '" + ProjectId + "'}",
+                success: function (_dt) {
+                    _dt = JSON.parse(_dt.GetData);
+                    $("#CustomerName").val(_dt[0].CustomerName);
+                    $("#ProjectName").val(_dt[0].ProjectName);
+                    $("#ProjectId").val(_dt[0].ProjectId);
+
+                    //$("#btnsubmit").val("Update");
+                    //idd = empid;
+                },
+                error: function () {
+                    alert('edit error !!');
+                }
+            });
+        }*@
 
 
 
 
 
-@*submitHandler: function(form) {
-        $.ajax({
-            url: form.action,
-            type: form.method,
-            data: $(form).serialize(),
-            success: function(response) {
-                $('#answers').html(response);
-            }
-        });
-    }*@
+
+
 
 
 @*function IsValidate() {

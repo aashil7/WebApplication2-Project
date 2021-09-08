@@ -103,7 +103,7 @@
             </th>
 
 
-            <th></th>
+            <th>Id</th>
 
 
 
@@ -177,7 +177,7 @@
             </th>
 
 
-            <th></th>
+            <th>Id</th>
 
 
         </tr>
@@ -258,7 +258,9 @@
                         /*   render: function (data) { return "Ye naam hai:" + data }*/
                     },
                     {
-                        data: "projectId"
+                        data: "projectId",
+                                  
+                     
                     },
                     {
                         data: "start_Date"
@@ -306,14 +308,14 @@
                         data: "recruiter"
                     },
                     {
-                        render: function (data, type, row) {
-
-
-                            return '<a href="Edit"' + row + '">EDIT</a>'
-                          /*  return createButton('edit', row.Id);*/
+                       data: "ProjectId",
+ 
+                        render: function (ProjectId, type, row) {
+                            
+                            return '<a href="Edit?ProjectId="' + ProjectId + '">EDIT</a>'
+                          
                         }
-                    }
-                ]
+                    } ]
 
 
 

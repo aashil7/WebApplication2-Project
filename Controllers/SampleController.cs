@@ -156,7 +156,7 @@ namespace WebApplication2.Controllers
         public ActionResult Edit()
         {
           
-            return View("Edit");
+            return View();
         }
 
 
@@ -308,25 +308,25 @@ namespace WebApplication2.Controllers
 //        while (rdr.Read())
 //        {
 //            var Project = new Project();
-//            Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
-//            Project.CustomerName = Convert.ToString(rdr["CustomerName"]);
-//            Project.ProjectName = Convert.ToString(rdr["ProjectName"]);
-//            Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
-//            Project.Start_Date = Convert.ToDateTime(rdr["Start_Date"]);
-//            Project.End_Date = Convert.ToDateTime(rdr["End_Date"]);
-//            Project.ProjectStatus = Convert.ToInt32(rdr["ProjectStatus"]);
-//            Project.LocationGroup = Convert.ToInt32(rdr["LocationGroup"]);
-//            Project.PayRollState = Convert.ToInt32(rdr["PayRollState"]);
-//            Project.SalesPerson = Convert.ToInt32(rdr["SalesPerson"]);
-//            Project.ProjectCategory = Convert.ToInt32(rdr["ProjectCategory"]);
-//            Project.ProjectType = Convert.ToInt32(rdr["ProjectType"]);
-//            Project.SubDomain = Convert.ToInt32(rdr["SubDomain"]);
-//            Project.TimeSheetRepresentative = Convert.ToInt32(rdr["TimeSheetRepresentative"]);
-//            Project.ClientInvoiceGroup = Convert.ToInt32(rdr["ClientInvoiceGroup"]);
-//            Project.TimeSheetType = Convert.ToInt32(rdr["TimeSheetType"]);
-//            Project.IsVMSTimeSheet = Convert.ToInt32(rdr["IsVMSTimeSheet"]);
-//            Project.PracticeType = Convert.ToInt32(rdr["PracticeType"]);
-//            Project.Recruiter = Convert.ToInt32(rdr["Recruiter"]);
+//Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
+//Project.CustomerName = Convert.ToString(rdr["CustomerName"]);
+//Project.ProjectName = Convert.ToString(rdr["ProjectName"]);
+//Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
+//Project.Start_Date = Convert.ToDateTime(rdr["Start_Date"]);
+//Project.End_Date = Convert.ToDateTime(rdr["End_Date"]);
+//Project.ProjectStatus = Convert.ToInt32(rdr["ProjectStatus"]);
+//Project.LocationGroup = Convert.ToInt32(rdr["LocationGroup"]);
+//Project.PayRollState = Convert.ToInt32(rdr["PayRollState"]);
+//Project.SalesPerson = Convert.ToInt32(rdr["SalesPerson"]);
+//Project.ProjectCategory = Convert.ToInt32(rdr["ProjectCategory"]);
+//Project.ProjectType = Convert.ToInt32(rdr["ProjectType"]);
+//Project.SubDomain = Convert.ToInt32(rdr["SubDomain"]);
+//Project.TimeSheetRepresentative = Convert.ToInt32(rdr["TimeSheetRepresentative"]);
+//Project.ClientInvoiceGroup = Convert.ToInt32(rdr["ClientInvoiceGroup"]);
+//Project.TimeSheetType = Convert.ToInt32(rdr["TimeSheetType"]);
+//Project.IsVMSTimeSheet = Convert.ToInt32(rdr["IsVMSTimeSheet"]);
+//Project.PracticeType = Convert.ToInt32(rdr["PracticeType"]);
+//Project.Recruiter = Convert.ToInt32(rdr["Recruiter"]);
 
 
 
