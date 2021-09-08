@@ -4,11 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using System.Web.Services;
 using WebApplication2.Models;
 

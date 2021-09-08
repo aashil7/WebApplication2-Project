@@ -62,7 +62,7 @@ namespace WebApplication2.Controllers
 
 
 
-        public ActionResult Add(ProjectAddEditView obj)
+        public bool Add(ProjectAddEditView obj)
         {
             Connection();
             SqlCommand com = new SqlCommand("Project_Ashil_Training", con);
@@ -93,11 +93,11 @@ namespace WebApplication2.Controllers
             if (i >= 1)
             {
 
-                return View("Table");
+                return true;
 
             }
 
-            return View("Index");
+            return false;
 
         }
 

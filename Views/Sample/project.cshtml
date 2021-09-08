@@ -215,6 +215,16 @@
                 ProjStatusValidation();
             }
         });
+
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlProjectType') {
+                ProjTypeValidation();
+            }
+        });
+
         $(document).on('input', 'input[type=date]', (event) => {
             const $ctrl = event.target;
             const ctrlId = $($ctrl).attr('id');
