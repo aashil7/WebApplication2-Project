@@ -356,37 +356,38 @@
 
             console.log(Project);
 
-            if ($("#btnSave").val() == "Submit") {
-                $.ajax({
-                    method: "POST",
-                    url: "/ProjectApi/AddTable",
-                    dataType: "json",
-                    data: Project,
-                    success: function () {
-                        alert("The Data is Updated")
-                        window.location.href = "/Sample/DataTable";
-                    },
-                    error: function () { }
-                });
-            }
+
+            $.ajax({
+                method: "POST",
+                url: "/ProjectApi/GetUpdate",
+                dataType: "json",
+                data: Project,
+                success: function () {
+                    alert("The Data is Updated")
+                    window.location.href = "/Sample/DataTable";
+                },
+                error: function () { }
+            });
         }
-        //else {
-        //    $.ajax({
-        //        url: "/ProjectApi/GetUpdate",
-        //        method: "Post",
-        //        dataType: 'json',
-        //        data: Project,
-        //        success: function () {
-        //            alert("Update data Successfully");
-        //            GetData();
-        //        },
-        //        error: function () {
-        //            alert("Update Error");
-        //        }
 
-        //    });
-        //}
+            //else {
+            //    $.ajax({
+            //        url: "/ProjectApi/GetUpdate",
+            //        method: "Post",
+            //        dataType: 'json',
+            //        data: Project,
+            //        success: function () {
+            //            alert("Update data Successfully");
+            //            GetData();
+            //        },
+            //        error: function () {
+            //            alert("Update Error");
+            //        }
 
+            //    });
+            //}
+        
+       
 
 
 
@@ -397,27 +398,34 @@
                 method: "GET",
                 url: "/ProjectApi/GetEmpData?ProjectId=9090",
                 success: function (data) {
-                    data = JSON.parse(data.GetData);
-
-                    $("#CustomerName").val(data[0].CustomerName);
-                    $("#ProjectName").val(data[0].ProjectName);
-                    $("#ProjectId").val(data[0].ProjectId);
-                    $("#StartDate").val(data[0].Start_Date);
-                    $("#EndDate").val(data[0].End_Date);
-                    $("#ddlProjectStatus").val(data[0].ProjectStatus(1801));
-                    $("#ddlLocationGroup").val(data[0].LocationGroup);
-                    $("#ddlPayrollState").val(data[0].PayRollState);
-                    $("#ddlSalesPerson").val(data[0].SalesPerson);
-                    $("#ddlProjectCategory").val(data[0].ProjectCategory);
-                    $("#ddlProjectType").val(data[0].ProjectType);
-                    $("#ddlSubDomain").val(data[0].SubDomain);
-                    $("#ddlTimesheetRepresentative").val(data[0].TimeSheetRepresentative);
-                    $("#ddlClientInvoiceGroup").val(data[0].ClientInvoiceGroup);
-                    $("#ddlTimesheetType").val(data[0].TimeSheetType);
-                    $("input[name='IsVmsTimeSheet']:checked").val(data[0].IsVMSTimeSheet);
-                    $("#ddlPracticeType").val(data[0].PracticeType);
-                    $("#ddlRecruiter").val(data[0].Recruiter);
+                    
                     console.log(data);
+                    console.log(data[0]);
+                    console.log(data[0].customerName);
+                    console.log(data[0].payRollState);
+                    console.log(data[0].salesPerson);
+                    console.log(data[0].projectType);
+                    console.log(data[0].start_Date);
+                    console.log(data[0].end_Date);
+                    $("#CustomerName").val(data[0].customerName);
+                    $("#ProjectName").val(data[0].projectName);
+                    $("#ProjectId").val(data[0].projectId);
+                    $("#Start_Date").val(data[0].start_Date);
+                    $("#End_Date").val(data[0].end_Date);
+                    $("#ddlProjectStatus").val(data[0].projectStatus);
+                    $("#ddlLocationGroup").val(data[0].locationGroup);
+                    $("#ddlPayRollState").val(data[0].payRollState);
+                    $("#ddlSalesPersonName").val(data[0].salesPerson);
+                    $("#ddlProjectCategory").val(data[0].projectCategory);
+                    $("#ddlProjectType").val(data[0].projectType);
+                    $("#ddlSubDomain").val(data[0].subDomain);
+                    $("#ddlTimeSheetRepresentative").val(data[0].timeSheetRepresentative);
+                    $("#ddlInvoiceGroup").val(data[0].clientInvoiceGroup);
+                    $("#ddlTimesheetType").val(data[0].timeSheetType);
+                    $("#input[name='IsVmsTimeSheet']:checked").val(data[0].isVMSTimeSheet);
+                    $("#ddlPracticeType").val(data[0].practiceType);
+                    $("#ddlRecruiter").val(data[0].recruiter);
+                  
                 },
                 error: function () { }
             })

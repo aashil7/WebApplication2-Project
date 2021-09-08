@@ -117,7 +117,7 @@ namespace WebApplication2.repository
 
                     Project.CustomerName = (rdr["CustumerName"].ToString());
                     Project.ProjectName = (rdr["ProjectName"].ToString());
-                    //Project.ProjectId = Convert.ToString(rdr["ProjectId"]);
+                    Project.ProjectId = (rdr["ProjectId"].ToString());
                     Project.Start_Date = (rdr["Start_Date"].ToString());
                     Project.End_Date = (rdr["End_Date"].ToString());
                     Project.ProjectStatus = (rdr["ProjectStatus"].ToString());
@@ -170,8 +170,7 @@ namespace WebApplication2.repository
         public bool Update(Project obj)
 
         {
-
-            con.Open();
+            Connection();
             SqlCommand cmd = new SqlCommand("Aashil_Project_Update", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@CustomerName", obj.CustomerName);
@@ -193,14 +192,16 @@ namespace WebApplication2.repository
             cmd.Parameters.AddWithValue("@PracticeType", obj.PracticeType);
             cmd.Parameters.AddWithValue("@Recruiter", obj.Recruiter);
 
-            cmd.ExecuteNonQuery();
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
             con.Close();
+            if (i >= 1)
 
             {
                 return true;
             }
 
-
+            return false;
 
 
         }
