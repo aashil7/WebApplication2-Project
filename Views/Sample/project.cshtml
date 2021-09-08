@@ -251,6 +251,64 @@
             }
         });
 
+    $(document).on('change', (event) => {
+        const $ctrl = event.target;
+        const ctrlId = $($ctrl).attr('id');
+        if (ctrlId === 'ddlSalesPersonName') {
+            ProjSPValidation();
+        }
+    });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlSubDomain') {
+                ProjSubDValidation();
+            }
+        });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlTimeSheetRepresentative') {
+                ProjTimeSValidation();
+            }
+        });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlTimesheetType') {
+                ProjTimeTValidation();
+            }
+        });
+
+
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlPracticeType') {
+                ProjPracValidation();
+            }
+        });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlRecruiter') {
+                ProjREcValidation();
+            }
+        });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlInvoiceGroup') {
+                ProjClientValidation();
+            }
+        });
+
 
         $(document).on('input', 'input[type=date]', (event) => {
             const $ctrl = event.target;

@@ -379,17 +379,13 @@
 
             $.ajax({
                 method: "GET",
-                url: "/ProjectApi/GetEmpData?ProjectId=9091",
+                url: "/ProjectApi/GetEmpData?ProjectId=9092",
                 success: function (data) {
                     
                     console.log(data);
                     console.log(data[0]);
-                    console.log(data[0].customerName);
-                    console.log(data[0].payRollState);
-                    console.log(data[0].salesPerson);
-                    console.log(data[0].projectType);
-                    console.log(data[0].start_Date);
-                    console.log(data[0].end_Date);
+                    console.log(data[0].isVMSTimeSheet);
+                  
                     $("#CustomerName").val(data[0].customerName);
                     $("#ProjectName").val(data[0].projectName);
                     $("#ProjectId").val(data[0].projectId);
@@ -405,7 +401,9 @@
                     $("#ddlTimeSheetRepresentative").val(data[0].timeSheetRepresentative);
                     $("#ddlInvoiceGroup").val(data[0].clientInvoiceGroup);
                     $("#ddlTimesheetType").val(data[0].timeSheetType);
-                    $("#input[name='IsVmsTimeSheet']:checked").val(data[0].isVMSTimeSheet);
+
+                    $("input[name='IsVMSTimeSheet']:checked").val(data[0].isVMSTimeSheet);
+                    
                     $("#ddlPracticeType").val(data[0].practiceType);
                     $("#ddlRecruiter").val(data[0].recruiter);
                   

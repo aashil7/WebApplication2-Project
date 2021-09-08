@@ -259,8 +259,8 @@
                     },
                     {
                         data: "projectId",
-                                  
-                     
+
+
                     },
                     {
                         data: "start_Date"
@@ -308,15 +308,18 @@
                         data: "recruiter"
                     },
                     {
-                       data: "ProjectId",
- 
-                        render: function (ProjectId, type, row) {
+                        render: function (data, type, row) {
+                           
+                                return '<a href="Edit?ProjectId=9090"' + row.ProjectId + '">EDIT</a>'
+                               
                             
-                            return '<a href="Edit"' + row.ProjectId + '">EDIT</a>'
-                          
                         }
-                    } ]
 
+
+                     }]
+
+
+              
 
 
             });
@@ -324,8 +327,7 @@
 
         });
 
-    
-                                          
+                          
 
 
 
