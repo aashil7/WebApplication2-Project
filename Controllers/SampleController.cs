@@ -137,14 +137,6 @@ namespace WebApplication2.Controllers
         }
 
 
-        //public ActionResult DataTab()
-        //{
-        //    var result = new repository.dataTab().GetData();
-        //    return View(result);
-        //}
-
-
-
         public ActionResult project()
         {
          
@@ -160,25 +152,7 @@ namespace WebApplication2.Controllers
         }
 
 
-        //public ActionResult Retrieve()
-        //{
-        //    var results = new repository.dataTab().GetEmpData();
-        //    return View(results);
-        //}
-
-
-        //public ActionResult Edittab(int Id)
-        //{
-        //    var results = new repository.dataTab().Edit(Id);
-        //    return View(results);
-        //}
-
-
-        //public ActionResult updateTab(Project obj)
-        //{
-        //    var resultsup = new repository.dataTab().Update(obj);
-        //    return View(resultsup);
-        //}
+      
 
 
 
@@ -192,148 +166,6 @@ namespace WebApplication2.Controllers
 
 
 
-
-
-
-
-
-//[HttpPost]
-//[ValidateAntiForgeryToken]
-//public ActionResult TermsAccept()
-//{
-//    if (ModelState.IsValid)
-//    {
-
-//        con.ConnectionString = "Accepted";
-//    }
-//    return View("Index");
-//}
-
-
-
-
-
-
-//public ActionResult List()
-//{
-//    var model = Project.GetList();
-//    return View(model);
-//}
-
-
-
-
-
-
-//public ActionResult Edit(int id)
-//{
-
-//    return View(db.GetView().Find(smodel => smodel.Id == id));
-//}
-
-//// POST: Student/Edit/5
-//[HttpPost]
-//public ActionResult Edit(int ID, View Pmodel)
-//{
-//    try
-//    {
-//        View db = new View();
-//        db.GetView(View,Pmodel);
-//        return RedirectToAction("Index");
-//    }
-//    catch
-//    {
-//        return View();
-//    }
-//}
-
-
-
-// POST: Student/Create
-//[HttpPost]
-//public ActionResult Create(ProjectAddEditView Pmodel)
-//{
-//    try
-//    {
-//        if (ModelState.IsValid)
-//        {
-//            common sdb = new common();
-//            if (sdb.GetList(Pmodel))
-//            {
-//                ViewBag.Message = "Student Details Added Successfully";
-//                ModelState.Clear();
-//            }
-//        }
-//        return View();
-//    }
-//    catch
-//    {
-//        return View();
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    public ActionResult Add()
-//    {
-
-//    List<Project> ProjectList = new List<Project>();
-//    string _conString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
-//    con = new SqlConnection(_conString);
-//    {
-//        SqlCommand cmd = new SqlCommand("ProjectView_Ashil_Training", con);
-//        cmd.CommandType = CommandType.Text;
-//        con.Open();
-
-//        SqlDataReader rdr = cmd.ExecuteReader();
-//        while (rdr.Read())
-//        {
-//            var Project = new Project();
-//Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
-//Project.CustomerName = Convert.ToString(rdr["CustomerName"]);
-//Project.ProjectName = Convert.ToString(rdr["ProjectName"]);
-//Project.ProjectId = Convert.ToInt32(rdr["ProjectId"]);
-//Project.Start_Date = Convert.ToDateTime(rdr["Start_Date"]);
-//Project.End_Date = Convert.ToDateTime(rdr["End_Date"]);
-//Project.ProjectStatus = Convert.ToInt32(rdr["ProjectStatus"]);
-//Project.LocationGroup = Convert.ToInt32(rdr["LocationGroup"]);
-//Project.PayRollState = Convert.ToInt32(rdr["PayRollState"]);
-//Project.SalesPerson = Convert.ToInt32(rdr["SalesPerson"]);
-//Project.ProjectCategory = Convert.ToInt32(rdr["ProjectCategory"]);
-//Project.ProjectType = Convert.ToInt32(rdr["ProjectType"]);
-//Project.SubDomain = Convert.ToInt32(rdr["SubDomain"]);
-//Project.TimeSheetRepresentative = Convert.ToInt32(rdr["TimeSheetRepresentative"]);
-//Project.ClientInvoiceGroup = Convert.ToInt32(rdr["ClientInvoiceGroup"]);
-//Project.TimeSheetType = Convert.ToInt32(rdr["TimeSheetType"]);
-//Project.IsVMSTimeSheet = Convert.ToInt32(rdr["IsVMSTimeSheet"]);
-//Project.PracticeType = Convert.ToInt32(rdr["PracticeType"]);
-//Project.Recruiter = Convert.ToInt32(rdr["Recruiter"]);
-
-
-
-//        }
-//    }
-//    return View(ProjectList);
-//}
 
 
 

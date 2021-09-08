@@ -48,7 +48,7 @@
     <thead>
         <tr>
 
-            <th>CustumerName</th>
+            <th>EmployeeName</th>
 
             <th>
                 ProjectName
@@ -122,7 +122,7 @@
     <tfoot>
         <tr>
 
-            <th>CustumerName</th>
+            <th>EmployeeName</th>
 
             <th>
                 ProjectName
@@ -190,7 +190,7 @@
 
 @section scripts{
     <script>
-        /* const { document } = require("jquery");*/
+    
 
         $(document).ready(function () {
             BindProjectTypeList();
@@ -312,7 +312,7 @@
  
                         render: function (ProjectId, type, row) {
                             
-                            return '<a href="Edit"' + ProjectId + '">EDIT</a>'
+                            return '<a href="Edit"' + row.ProjectId + '">EDIT</a>'
                           
                         }
                     } ]
@@ -325,32 +325,7 @@
         });
 
     
-                                            //$("#prjList").on('click', 'tbody td .edit', function (e) {
-                                            //    fnResetControls();
-                                            //    var dataTable = $("#prjList").DataTable();
-                                            //    var clickedRow = $($(this).closest('td')).closest('tr');
-                                            //    $(clickedRow).find('td').each(function () {
-                                            //        // do your cool stuff
-                                            //        if ($(this).hasClass('editable')) {
-                                            //            if ($(this).hasClass('text')) {
-                                            //                var html = fnCreateTextBox($(this).html(), 'name');
-                                            //                $(this).html($(html))
-                                            //            }
-                                            //        }
-                                            //    });
-
-
-                                            //    $('#dtExample tbody tr td .update').removeClass('update').addClass('edit').html('Edit');
-                                            //    $('#dtExample tbody tr td .cancel').removeClass('cancel').addClass('delete').html('Delete');
-                                            //    $(clickedRow).find('td .edit').removeClass('edit').addClass('update').html('Update');
-                                            //    $(clickedRow).find('td .delete').removeClass('delete').addClass('cancel').html('Cancel');
-
-                                            //});
-
-                                            //function fnCreateTextBox(value, fieldprop) {
-                                            //    return '<input data-field="' + fieldprop + '" type="text" value="' + value + '" ></input>';
-                                            //}
-
+                                          
 
 
 

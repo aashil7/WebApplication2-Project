@@ -14,7 +14,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label>CustomerName</label>
+            <label>EmployeeName</label>
 
             <input type="text" id="CustomerName" class="form-control" />
 
@@ -370,23 +370,6 @@
             });
         }
 
-            //else {
-            //    $.ajax({
-            //        url: "/ProjectApi/GetUpdate",
-            //        method: "Post",
-            //        dataType: 'json',
-            //        data: Project,
-            //        success: function () {
-            //            alert("Update data Successfully");
-            //            GetData();
-            //        },
-            //        error: function () {
-            //            alert("Update Error");
-            //        }
-
-            //    });
-            //}
-        
        
 
 
@@ -665,24 +648,7 @@
 
         }
 
-            //function GetData() { }
-                //$("#ddlProjectStatus").val("1801");
-                //$("#ddlLocationGroup").val("1163");
-                //$("#ddlPayRollState").val("802");
-                //$("#ddlProjectType").val("4652");
-                //$("#ddlSalesPersonName").val("4721");
-                //$("#ddlProjectCategory").val("19492");
-                //$("#ddlSubDomain").val("2");
-                //$("#ddlTimeSheetRepresentative").val("113");
-                //$("#ddlTimesheetType").val("13121");
-                //$("#ddlPracticeType").val("15761");
-                //$("#ddlRecruiter").val(77648);
-                //$("#ddlInvoiceGroup").val("10302");
-
-
-
-
-
+        
 
     </script>
 }
@@ -690,171 +656,4 @@
 
 
 
-
-
-
-        @*function GetData() {
-            $.ajax({
-                url: "/ProjectApi/GetEdit?ProjectId=1100",
-                method: "Get",
-
-dataType: 'json',
-                data: "{Id : '" + ProjectId + "'}",
-                success: function (_dt) {
-                    _dt = JSON.parse(_dt.GetData);
-                    $("#CustomerName").val(_dt[0].CustomerName);
-                    $("#ProjectName").val(_dt[0].ProjectName);
-                    $("#ProjectId").val(_dt[0].ProjectId);
-
-                    //$("#btnsubmit").val("Update");
-                    //idd = empid;
-                },
-                error: function () {
-                    alert('edit error !!');
-                }
-            });
-        }*@
-
-
-
-
-
-
-
-
-
-@*function IsValidate() {
-    //    var CustomerName = document.forms["ProForm"]["CustomerName"];
-    //    var ProjectName = document.forms["ProForm"]["ProjectName"];
-    //    var ProjectId = document.forms["ProForm"]["ProjectId"];
-    //    var Start_Date = document.forms["ProForm"]["Start_Date"];
-    //    var ProjectStatus = document.forms["ProForm"]["ddlProjectStatus"];
-    //    var LocationGroup = document.forms["ProForm"]["ddlLocationGroup"];
-    //    var PayRoll = document.forms["ProForm"]["ddlPayRollState"];
-    //    var SalesPerson = document.forms["ProForm"]["ddlSalesPersonName"];
-    //    var ProjectCategory = document.forms["ProForm"]["ddlProjectCategory"];
-    //    var SubDomain = document.forms["ProForm"]["ddlSubDomain"];
-    //    var ProjectType = document.forms["ProForm"]["ddlProjectType"];
-    //    var TimeRep = document.forms["ProForm"]["ddlTimeSheetRepresentative"];
-    //    var TimeSheetType = document.forms["ProForm"]["ddlTimesheetType"];
-    //    var PracticeType = document.forms["ProForm"]["ddlPracticeType"];
-    //    var Recruiter = document.forms["ProForm"]["ddlRecruiter"];
-    //    var Invoice = document.forms["ProForm"]["ddlInvoiceGroup"];
-
-
-
-    //    if (CustomerName.value === "") {
-    //        console.log("Please enter Customer name.");
-    //        CustomerName.focus();
-    //        return false;
-    //    }
-    //    else if (CustomerName.value.length <= 2) {
-    //        window.alert("Please Enter Atleast 3 Letters in Customer Name");
-    //        CustomerName.focus();
-    //        return false;
-
-    //    }
-
-
-
-    //    if (ProjectName.value == "") {
-    //        window.alert("Please enter Project name.");
-    //        ProjectName.focus();
-    //        return false;
-    //    }
-
-    //    if (ProjectId.value == "") {
-    //        window.alert("Please enter Project Id.");
-    //        ProjectId.focus();
-    //        return false;
-    //    }
-
-    //    if (Start_Date.value == "") {
-    //        window.alert("Please Select Start Date .");
-    //        Start_Date.focus();
-    //        return false;
-    //    }
-
-    //    if (ProjectStatus.value == "") {
-    //        window.alert("Please Select Project Status .");
-    //        ProjectStatus.focus();
-    //        return false;
-    //    }
-
-    //    if (ProjectType.value == "") {
-    //        window.alert("Please Select  Project Type .");
-    //        ProjectType.focus();
-    //        return false;
-    //    }
-
-    //    if (ProjectCategory.value == "") {
-    //        window.alert("Please Select  Project Category .");
-    //        ProjectCategory.focus();
-    //        return false;
-    //    }
-
-    //    if (LocationGroup.value == "") {
-    //        window.alert("Please Select Location Group .");
-    //        LocationGroup.focus();
-    //        return false;
-    //    }
-
-    //    if (PayRoll.value == "") {
-    //        window.alert("Please Select PayRoll .");
-    //        PayRoll.focus();
-    //        return false;
-    //    }
-
-    //    if (SalesPerson.value == "") {
-    //        window.alert("Please Select  Sales Person .");
-    //        SalesPerson.focus();
-    //        return false;
-    //    }
-
-
-
-    //    if (SubDomain.value == "") {
-    //        window.alert("Please Select  Sub Domain .");
-    //        SubDomain.focus();
-    //        return false;
-    //    }
-
-
-    //    if (TimeRep.value == "") {
-    //        window.alert("Please Select  TimeSheet Representative .");
-    //        TimeRep.focus();
-    //        return false;
-    //    }
-
-
-    //    if (TimeSheetType.value == "") {
-    //        window.alert("Please Select  TimeSheet Type .");
-    //        TimeSheetType.focus();
-    //        return false;
-    //    }
-
-
-    //    if (PracticeType.value == "") {
-    //        window.alert("Please Select  Practice Type .");
-    //        PracticeType.focus();
-    //        return false;
-    //    }
-
-
-
-    //    if (Recruiter.value == "") {
-    //        window.alert("Please Select  Recruiter .");
-    //        Recruiter.focus();
-    //        return false;
-    //    }
-
-
-    //    if (Invoice.value == "") {
-    //        window.alert("Please Select  Client Invoice Group .");
-    //        Invoice.focus();
-    //        return false;
-    //    }
-
-    //    return true;
-    //}*@
 

@@ -12,7 +12,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label>CustomerName</label>
+            <label>EmployeeName</label>
 
             <input type="text" id="CustomerName" class="form-control" />
 
@@ -54,7 +54,8 @@
         <div class="form-group">
             <label>Project Type </label>
             <select id="ddlProjectType" class="form-control">
-                <option value="" disabled selected hidden>Select Project Type</option>
+                @*<option value="" disabled selected hidden>Select Project Type</option>*@
+                <option> Select Project Type</option>
             </select>
         </div>
 
@@ -62,7 +63,8 @@
         <div class="form-group">
             <label>Project Category </label>
             <select id="ddlProjectCategory" class="form-control">
-                <option value="" disabled selected hidden>Select Project Category</option>
+                @*<option value="" disabled selected hidden>Select Project Category</option>*@
+                <option> Select Project Category </option>
             </select>
         </div>
 
@@ -71,7 +73,8 @@
         <div class="form-group">
             <label>LocationGroup </label>
             <select id="ddlLocationGroup" class="form-control">
-                <option value="" disabled selected hidden>Select Loation Group</option>
+                @*<option value="" disabled selected hidden>Select Loation Group</option>*@
+                <option> Select Location Group </option>
             </select>
         </div>
 
@@ -82,14 +85,16 @@
     <div class="form-group">
         <label>PayRollState </label>
         <select id="ddlPayRollState" class="form-control">
-            <option value="" disabled selected hidden>Select PayRoll State</option>
+            @*<option value="" disabled selected hidden>Select PayRoll State</option>*@
+            <option> Select PayRollState </option>
         </select>
     </div>
 
     <div class="form-group">
         <label>SalesPerson</label>
         <select id="ddlSalesPersonName" class="form-control">
-            <option value="" disabled selected hidden>Select Sales Person</option>
+            @*<option value="" disabled selected hidden>Select Sales Person</option>*@
+            <option> Select Sales Person</option>
         </select>
     </div>
 
@@ -98,42 +103,48 @@
     <div class="form-group">
         <label>Sub Domain </label>
         <select id="ddlSubDomain" class="form-control">
-            <option value="" disabled selected hidden>Select Sub Domain</option>
+            @*<option value="" disabled selected hidden>Select Sub Domain</option>*@
+            <option> Select Sub Domain</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>TimeSheet Representative </label>
         <select id="ddlTimeSheetRepresentative" class="form-control">
-            <option value="" disabled selected hidden>Select TimeSheet Representative</option>
+            @*<option value="" disabled selected hidden>Select TimeSheet Representative</option>*@
+            <option> Select Timesheet Representative </option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Timesheet Type </label>
         <select id="ddlTimesheetType" class="form-control">
-            <option value="" disabled selected hidden>Select TimeSheet Type</option>
+            @*<option value="" disabled selected hidden>Select TimeSheet Type</option>*@
+            <option> Select Timesheet Type </option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Practice Type</label>
         <select id="ddlPracticeType" class="form-control">
-            <option value="" disabled selected hidden>Select Practice Type</option>
+            @*<option value="" disabled selected hidden>Select Practice Type</option>*@
+            <option> Select Practice Type</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Recruiter</label>
         <select id="ddlRecruiter" class="form-control">
-            <option value="" disabled selected hidden>Select  Recruiter</option>
+            @*<option value="" disabled selected hidden>Select  Recruiter</option>*@
+            <option> Select  Recruiter</option>
         </select>
     </div>
 
     <div class="form-group">
         <label>Client Invoice Group</label>
         <select id="ddlInvoiceGroup" class="form-control">
-            <option value="" disabled selected hidden>Select Invoice Group</option>
+            @*<option value="" disabled selected hidden>Select Invoice Group</option>*@
+            <option> Select Client Invoice Group </option>
         </select>
     </div>
 
@@ -145,13 +156,13 @@
     </div>
 
 
-    <input type="button" value="Submit" id="btnSave" />
+    <input type="button" value="Save" id="btnSave" />
 </form>
 
 @section scripts{
 
     <script>
-        /*const { data } = require("jquery");*/
+ 
 
         $(document).ready(function () {
             BindProjectStatusList();
@@ -172,12 +183,45 @@
                     SaveData();
                 }
 
-
-                //GetData();
+              
+              
 
             });
         });
 
+
+
+
+        $(document).on('input', 'input[type=text]', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'CustomerName') {
+                CustNameValidation();
+            }
+        });
+
+        $(document).on('input', 'input[type=text]', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ProjectName') {
+                ProjNameValidation();
+            }
+        });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlProjectStatus') {
+                ProjStatusValidation();
+            }
+        });
+        $(document).on('input', 'input[type=date]', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'Start_Date') {
+                StartDateValidation();
+            }
+        });
 
 
 
@@ -264,8 +308,76 @@
         }
 
 
+        function ProjTypeValidation() {
+            let flag = true;
+            const ele = $('#ddlProjectType');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlProjectType').val();
 
 
+            if (ProjName === "Select Project Type") {
+                addErrorMessageJQ(ele, 'Please Select the Project Type');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
+
+        function ProjCatValidation() {
+            let flag = true;
+            const ele = $('#ddlProjectCategory');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlProjectCategory').val();
+
+
+            if (ProjName === "Select Project Category") {
+                addErrorMessageJQ(ele, 'Please Select the Project Category');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+        function ProjLocValidation() {
+            let flag = true;
+            const ele = $('#ddlLocationGroup');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlLocationGroup').val();
+
+
+            if (ProjName === "Select Location Group") {
+                addErrorMessageJQ(ele, 'Please Select the Location Group ');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
+        function ProjPayrollValidation() {
+            let flag = true;
+            const ele = $('#ddlPayRollState');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlPayRollState').val();
+
+
+            if (ProjName === "Select PayRoll State") {
+                addErrorMessageJQ(ele, 'Please Select the PayRoll State');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
 
 
         function IsValidate() {
@@ -281,7 +393,19 @@
             if (!ProjStatusValidation()) {
                 flag = false;
             }
-            return true;
+            if (!ProjTypeValidation()) {
+                flag = false;
+            }
+            if (!ProjCatValidation()) {
+                flag = false;
+            }
+            if (!ProjLocValidation()) {
+                flag = false;
+            }
+            if (!ProjPayrollValidation()) {
+                flag = false;
+            }
+            return flag;
         }
 
 
