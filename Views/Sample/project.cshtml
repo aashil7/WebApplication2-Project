@@ -86,7 +86,7 @@
         <label>PayRollState </label>
         <select id="ddlPayRollState" class="form-control">
             @*<option value="" disabled selected hidden>Select PayRoll State</option>*@
-            <option> Select PayRollState </option>
+            <option> Select PayRoll State </option>
         </select>
     </div>
 
@@ -156,7 +156,7 @@
     </div>
 
 
-    <input type="button" value="Save" id="btnSave" />
+    <input type="button" value="Submit" id="btnSave" />
 </form>
 
 @section scripts{
@@ -224,6 +224,33 @@
                 ProjTypeValidation();
             }
         });
+
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlProjectCategory') {
+                ProjCatValidation();
+            }
+        });
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlLocationGroup') {
+                ProjLocValidation();
+            }
+        });
+
+
+        $(document).on('change', (event) => {
+            const $ctrl = event.target;
+            const ctrlId = $($ctrl).attr('id');
+            if (ctrlId === 'ddlPayRollState') {
+                ProjPayrollValidation();
+            }
+        });
+
 
         $(document).on('input', 'input[type=date]', (event) => {
             const $ctrl = event.target;
@@ -390,7 +417,134 @@
         }
 
 
+        function ProjSPValidation() {
+            let flag = true;
+            const ele = $('#ddlSalesPersonName');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlSalesPersonName').val();
+
+
+            if (ProjName === "Select Sales Person") {
+                addErrorMessageJQ(ele, 'Please Select the Sales Person');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
+        function ProjSubDValidation() {
+            let flag = true;
+            const ele = $('#ddlSubDomain');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlSubDomain').val();
+
+
+            if (ProjName === "Select Sub Domain") {
+                addErrorMessageJQ(ele, 'Please Select the Sub Domain');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+        function ProjTimeSValidation() {
+            let flag = true;
+            const ele = $('#ddlTimeSheetRepresentative');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlTimeSheetRepresentative').val();
+
+
+            if (ProjName === "Select Timesheet Representative") {
+                addErrorMessageJQ(ele, 'Please Select the Timesheet Representative');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
+        function ProjTimeTValidation() {
+            let flag = true;
+            const ele = $('#ddlTimesheetType');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlTimesheetType').val();
+
+
+            if (ProjName === "Select Timesheet Type") {
+                addErrorMessageJQ(ele, 'Please Select the Timesheet Type');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
+
+        function ProjPracValidation() {
+            let flag = true;
+            const ele = $('#ddlPracticeType');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlPracticeType').val();
+
+
+            if (ProjName === "Select Practice Type") {
+                addErrorMessageJQ(ele, 'Please Select the Practice Type');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
+
+        function ProjREcValidation() {
+            let flag = true;
+            const ele = $('#ddlRecruiter');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlRecruiter').val();
+
+
+            if (ProjName === "Select Recruiter") {
+                addErrorMessageJQ(ele, 'Please Select the Recruiter');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+        function ProjClientValidation() {
+            let flag = true;
+            const ele = $('#ddlInvoiceGroup');
+            clearMessageJQ(ele)
+            const ProjName = $('#ddlInvoiceGroup').val();
+
+
+            if (ProjName === "Select Client Invoice Group") {
+                addErrorMessageJQ(ele, 'Please Select the Client Invoice Group');
+                console.log(ProjName);
+                flag = false;
+            } else {
+                flag = true;
+            }
+            return flag;
+        }
+
+
         function IsValidate() {
+            let flag = true ;
             if (!CustNameValidation()) {
                 flag = false;
             }
@@ -415,7 +569,28 @@
             if (!ProjPayrollValidation()) {
                 flag = false;
             }
-            return flag;
+            if (!ProjSPValidation()) {
+                flag = false;
+            }
+            if (!ProjSubDValidation()) {
+                flag = false;
+            }
+            if (!ProjTimeSValidation()) {
+                flag = false;
+            }
+            if (!ProjTimeTValidation()) {
+                flag = false;
+            }
+            if (!ProjPracValidation()) {
+                flag = false;
+            }
+            if (!ProjREcValidation()) {
+                flag = false;
+            }
+            if (!ProjClientValidation()) {
+                flag = false;
+            }
+            return flag ;
         }
 
 
@@ -470,7 +645,7 @@
           
                 $.ajax({
                     method: "POST",
-                    url: "/ProjectApi/AddTable",
+                    url: "/ProjectApi/SampleAdd",
                     dataType: "json",
                     data: Project,
                     success: function () {

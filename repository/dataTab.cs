@@ -64,32 +64,6 @@ namespace WebApplication2.repository
         }
 
 
-
-
-
-
-        //[WebMethod]
-        //public string GetEmpData()
-        //{
-
-        //    con.Open();
-        //    string _data = "";
-        //    SqlCommand cmd = new SqlCommand("Aashil_ProjectRet", con);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    DataSet ds = new DataSet();
-        //    da.Fill(ds);
-        //    con.Close();
-        //    if (ds.Tables[0].Rows.Count > 0)
-        //    {
-        //        _data = JsonConvert.SerializeObject(ds.Tables[0]);
-        //    }
-        //    return _data;
-        //}
-
-
-
-
         [WebMethod]
         public List<Project> GetEmpData(string ProjectId)
         {
@@ -210,16 +184,3 @@ namespace WebApplication2.repository
 
 
 
-
-
-//List<Project> employeelist = new List<Project>();
-//string CS = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
-//using (SqlConnection con = new SqlConnection(CS))
-//{
-//    SqlCommand cmd = new SqlCommand("Aashil_ProjectRet", con);
-//    cmd.CommandType = CommandType.StoredProcedure;
-//    con.Open();
-
-//    SqlDataReader rdr = cmd.ExecuteReader();
-
-//    while (rdr.Read())

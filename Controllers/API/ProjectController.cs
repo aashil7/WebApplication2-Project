@@ -10,8 +10,8 @@ namespace WebApplication2.Controllers.API
     {
 
         [HttpPost]
-        [Route("ProjectApi/AddTable")]
-        public IHttpActionResult GetDataTable(Project Proj)
+        [Route("ProjectApi/SampleAdd")]
+        public IHttpActionResult SampleAdd(Project Proj)
         {
             dataTab objRepo = new dataTab();
             var datat = objRepo.GetDataTable(Proj);
