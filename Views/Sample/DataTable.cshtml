@@ -7,37 +7,43 @@
 
 <h2>Projects List</h2>
 
-<div class="col-md-3">
-    <div class="form-group">
-        <label>Project Type </label>
-        <select id="ddlProjectType" class="form-control">
-            <option value="" disabled selected hidden>Select Project Type</option>
-        </select>
+<div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label>Project Type </label>
+            <select id="ddlProjectType" class="form-control">
+                <option value="" disabled selected hidden>Select Project Type</option>
+            </select>
+        </div>
     </div>
-</div>
 
-<div class="col-md-3">
-    <div class="form-group">
-        <label>Practice Type </label>
-        <select id="ddlPracticeType" class="form-control">
-            <option value="" disabled selected hidden>Select Project Type</option>
-        </select>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label>Practice Type </label>
+            <select id="ddlPracticeType" class="form-control">
+                <option value="" disabled selected hidden>Select Project Type</option>
+            </select>
+        </div>
     </div>
+
+
+    <div class="col-md-3">
+        <label>Search</label>
+        <meta name="viewport" content="width=device-width" />
+        <input class="form-control" type="text" id="Search" />
+        @*<input type="button" value="Submit" id="btnSave" />*@
+    </div>
+
 </div>
 
 
-<div class="col-md-3">
-    <label>Search</label>
-    <input class="form-control" type="text" id="Search" />
-    <input type="button" value="Submit" id="btnSave" />
+
+
+<div class="col-md-6">
+    
+    <a href="project" class="btn btn-primary" >New</a>
 </div>
-
-
     
-    
-
-
-
 
 <table id="prjList" class="table-bordered table-striped">
 
@@ -190,14 +196,22 @@
 
 @section scripts{
     <script>
-    
+
 
         $(document).ready(function () {
             BindProjectTypeList();
             BindPracticeTypeList();
             $("#btnSave").on("click", function () {
 
+
+
             });
+
+
+
+
+
+
 
 
 
@@ -237,9 +251,16 @@
             }
         })
 
+
+
+
         $(document).ready(function () {
 
+
+
             $("#prjList").DataTable({
+                searching: false,
+                "lengthMenu": [[10, 1, 20, 100, -1], [10, 1, 20, 100, "All"]],
                 ajax: {
                     url: "/ProjectApi/GetProjectsList",
                     dataSrc: ""
@@ -308,18 +329,17 @@
                         data: "recruiter"
                     },
                     {
-                        render: function (data, type, row) {
-                           
-                                return '<a href="Edit?ProjectId=9090"' + row.ProjectId + '">EDIT</a>'
-                               
-                            
+                        data: "projectId",
+                        render: function (projectId, type, full, meta) {
+                            //return meta.row;
+                            return '<a href=project?projectId=' + projectId + '><i class="glyphicon glyphicon-pencil"></i>Edit</a>'
                         }
 
 
-                     }]
+
+                    }]
 
 
-              
 
 
             });
@@ -327,7 +347,17 @@
 
         });
 
-                          
+
+        //var AddEditEmployee = function (projectId) {
+
+        //    var url = "/project?projectId=" + projectId;
+
+        //    $("#prjList").load(url, function () {
+        //        $("#prjList").modal("show");
+
+        //    })
+
+        //}
 
 
 

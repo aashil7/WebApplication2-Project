@@ -231,5 +231,50 @@ namespace WebApplication2.repository
         }
 
 
+
+
+
+
+        //public bool GetManageSearch(Project obj)
+        //{
+        //    Connection();
+        //    SqlCommand cmd = new SqlCommand("ManageProject_Aashil", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.AddWithValue("@CustomerName", obj.CustomerName);
+        //    cmd.Parameters.AddWithValue("@ProjectName", obj.ProjectName);
+        //    cmd.Parameters.AddWithValue("@ProjectId", obj.ProjectId);
+        //    cmd.Parameters.AddWithValue("@Start_Date", obj.Start_Date);
+        //    cmd.Parameters.AddWithValue("@End_Date", obj.End_Date);
+        //    cmd.Parameters.AddWithValue("@ProjectStatus", obj.ProjectStatus);
+        //    cmd.Parameters.AddWithValue("@LocationGroup", obj.LocationGroup);
+        //    cmd.Parameters.AddWithValue("@PayRollState", obj.PayRollState);
+        //    cmd.Parameters.AddWithValue("@SalesPerson", obj.SalesPerson);
+        //    cmd.Parameters.AddWithValue("@ProjectCategory", obj.ProjectCategory);
+        //    cmd.Parameters.AddWithValue("@ProjectType", obj.ProjectType);
+        //    cmd.Parameters.AddWithValue("@SubDomain", obj.SubDomain);
+        //    cmd.Parameters.AddWithValue("@TimeSheetRepresentative", obj.TimeSheetRepresentative);
+        //    cmd.Parameters.AddWithValue("@ClientInvoiceGroup", obj.ClientInvoiceGroup);
+        //    cmd.Parameters.AddWithValue("@TimeSheetType", obj.TimeSheetType);
+        //    cmd.Parameters.AddWithValue("@IsVMSTimeSheet", obj.IsVMSTimeSheet);
+        //    cmd.Parameters.AddWithValue("@PracticeType", obj.PracticeType);
+        //    cmd.Parameters.AddWithValue("@Recruiter", obj.Recruiter);
+
+        //    con.Open();
+        //    int i = cmd.ExecuteNonQuery();
+        //    con.Close();
+        //    if (i >= 1)
+
+        //    {
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
+
+
+
+
+
+
     }
 }

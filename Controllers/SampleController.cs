@@ -152,6 +152,10 @@ namespace WebApplication2.Controllers
         }
 
 
+        public ActionResult Editor()
+        {
+            return View();
+        }
       
 
 

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SampleAdd</h2>
+<h2>ProjectAdd</h2>
 
 
 <form name="ProForm">
@@ -177,18 +177,24 @@
             BindTimeSheetRepList();
             BindSalesPersonList();
             BindPayRollList();
-            $("#btnSave").on("click", function () {
+                       
+                    
 
-                if (IsValidate()) {
-                    SaveData();
-                }
+                $("#btnSave").on("click", function () {
 
-              
-              
+                    if (IsValidate()) {
+                        SaveData();
+                    }
 
+               
             });
         });
 
+
+
+
+
+      
 
 
 
@@ -329,7 +335,7 @@
 
 
         function addErrorMessageJQ(ele, msg) {
-            const errorCtrl = $('<span />').addClass('error').html(msg);
+            const errorCtrl = $('<span style="color:red" />').addClass('error').html(msg);
             $(ele).closest('div').append(errorCtrl);
         }
 
@@ -700,7 +706,7 @@
 
             console.log(Project);
 
-          
+         
                 $.ajax({
                     method: "POST",
                     url: "/ProjectApi/SampleAdd",
@@ -713,7 +719,47 @@
                     error: function () { }
                 });
             }
-         
+          
+               
+
+
+        
+
+            $.ajax({
+                method: "GET",
+                url: "/ProjectApi/GetEmpData?ProjectId=9092",
+                success: function (data) {
+
+                    console.log(data);
+                    console.log(data[0]);
+                    console.log(data[0].isVMSTimeSheet);
+
+                    $("#CustomerName").val(data[0].customerName);
+                    $("#ProjectName").val(data[0].projectName);
+                    $("#ProjectId").val(data[0].projectId);
+                    $("#Start_Date").val(data[0].start_Date);
+                    $("#End_Date").val(data[0].end_Date);
+                    $("#ddlProjectStatus").val(data[0].projectStatus);
+                    $("#ddlLocationGroup").val(data[0].locationGroup);
+                    $("#ddlPayRollState").val(data[0].payRollState);
+                    $("#ddlSalesPersonName").val(data[0].salesPerson);
+                    $("#ddlProjectCategory").val(data[0].projectCategory);
+                    $("#ddlProjectType").val(data[0].projectType);
+                    $("#ddlSubDomain").val(data[0].subDomain);
+                    $("#ddlTimeSheetRepresentative").val(data[0].timeSheetRepresentative);
+                    $("#ddlInvoiceGroup").val(data[0].clientInvoiceGroup);
+                    $("#ddlTimesheetType").val(data[0].timeSheetType);
+
+                    $("input[name='IsVMSTimeSheet']:checked").val(data[0].isVMSTimeSheet);
+
+                    $("#ddlPracticeType").val(data[0].practiceType);
+                    $("#ddlRecruiter").val(data[0].recruiter);
+
+                },
+                error: function () { }
+            })
+
+        
 
 
 
@@ -956,24 +1002,6 @@
 
 
 
-
-
-
-
-
-
-
-
-@*submitHandler: function(form) {
-        $.ajax({
-            url: form.action,
-            type: form.method,
-            data: $(form).serialize(),
-            success: function(response) {
-                $('#answers').html(response);
-            }
-        });
-    }*@
 
 
  @*function IsValidate() {

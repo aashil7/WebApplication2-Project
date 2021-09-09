@@ -199,6 +199,16 @@ namespace WebApplication2.Controllers.API
 
 
 
+        //[HttpGet]
+        //[Route("ProjectApi/GetManageSearch")]
+        //public IHttpActionResult ManageSearch(Project obj)
+        //{
+        //    common objRepo = new common();
+        //    var datatable = objRepo.GetManageSearch(obj);
+        //    return Ok(datatable);
+        //}
+
+
     }
 }
 
