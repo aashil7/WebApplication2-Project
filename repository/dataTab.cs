@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
+using Newtonsoft.Json;
 using WebApplication2.Models;
 
 namespace WebApplication2.repository
@@ -47,7 +46,7 @@ namespace WebApplication2.repository
             com.Parameters.AddWithValue("@IsVMSTimeSheet", obj.IsVMSTimeSheet);
             com.Parameters.AddWithValue("@PracticeType", obj.PracticeType);
             com.Parameters.AddWithValue("@Recruiter", obj.Recruiter);
-           
+
 
             con.Open();
             int i = com.ExecuteNonQuery();
@@ -67,7 +66,7 @@ namespace WebApplication2.repository
         [WebMethod]
         public List<Project> GetEmpData(string ProjectId)
         {
-          
+
             string sqlconnectionstring = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             List<Project> employeelist = new List<Project>();
             using (SqlConnection con = new SqlConnection(sqlconnectionstring))
@@ -79,7 +78,7 @@ namespace WebApplication2.repository
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
-     
+
                 {
                     Project Project = new Project();
 
