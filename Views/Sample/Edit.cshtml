@@ -155,12 +155,21 @@
     <script>
 
         $(document).ready(function () {
-            $.when(BindProjectStatusList(),
-                BindProjectTypeList(),
-                BindProjectCategoryList(),
-                BindClientInvoiceGroupList(),
-                BindTimeSheetTypeList(),
-                BindPracticeTypeList(),
+
+            const ProjectType = 4650,
+                ProjectStatus = 1800;
+            ProjectCategory = 19491;
+            InvoiceGroup = 10300;
+            TimeSheetType = 13120;
+            PracticeType = 15760;
+
+
+         $.when(BindAppRefData(ddlProjectType, ProjectType),
+                BindAppRefData(ddlProjectStatus, ProjectStatus),
+                BindAppRefData(ddlProjectCategory, ProjectCategory),
+                BindAppRefData(ddlInvoiceGroup, InvoiceGroup),
+                BindAppRefData(ddlTimesheetType, TimeSheetType),
+                BindAppRefData(ddlPracticeType, PracticeType),
                 BindRecruiterList(),
                 BindDomainList(),
                 BindLocationList(),
@@ -181,13 +190,16 @@
                     console.log("ddlInvoiceGroup");
 
 
-                    GetData();
                 })
 
             $("#btnSave").on("click", function () {
 
                 if (IsValidate()) {
                     SaveData();
+                }
+                else {
+
+                    GetData();
                 }
 
 
@@ -349,18 +361,16 @@
 
             $.ajax({
                 method: "POST",
-                url: "/ProjectApi/GetUpdate",
+                url: "/ProjectApi/SampleAdd",
                 dataType: "json",
                 data: Project,
                 success: function () {
-                    alert("The Data is Updated")
+                    alert("The Data is Posted")
                     window.location.href = "/Sample/DataTable";
                 },
                 error: function () { }
             });
         }
-
-       
 
 
 
@@ -369,7 +379,8 @@
 
             $.ajax({
                 method: "GET",
-                url: "/ProjectApi/GetEmpData?ProjectId=9092",
+                url: "/ProjectApi/GetEmpData?projectId=19091",
+       
                 success: function (data) {
                     
                     console.log(data);
@@ -393,7 +404,7 @@
                     $("#ddlTimesheetType").val(data[0].timeSheetType);
 
                     $("input[name='IsVMSTimeSheet']:checked").val(data[0].isVMSTimeSheet);
-                    
+                                       
                     $("#ddlPracticeType").val(data[0].practiceType);
                     $("#ddlRecruiter").val(data[0].recruiter);
                   
@@ -401,125 +412,44 @@
                 error: function () { }
             })
 
-        }
 
 
-
-
-
-        function BindProjectStatusList() {
             $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetAppRefData?parentId=1800",
-                success: function (data) {
-                    //console.log(data);
-                    $(data).each(function () {
-                        $("#ddlProjectStatus").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
+                method: "POST",
+                url: "/ProjectApi/GetUpdate",
+                dataType: "json",
+                data: Project,
+                success: function () {
+                    alert("The Data is Updated")
+                    window.location.href = "/Sample/DataTable";
                 },
-
                 error: function () { }
             });
 
-        }
 
-
-
-        function BindProjectTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetProjectType?parentId=4650",
-                success: function (data) {
-                    //console.log(data);
-                    $(data).each(function () {
-                        $("#ddlProjectType").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-                error: function () { }
-            })
-        }
-
-
-
-        function BindProjectCategoryList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetProjectCategory?parentId=19491",
-                success: function (data) {
-                    //console.log(data);
-                    $(data).each(function () {
-                        $("#ddlProjectCategory").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-
-                error: function () { }
-            })
         }
 
 
 
 
-        function BindClientInvoiceGroupList() {
+
+        function BindAppRefData(ctrl, parentId) {
+            //
             $.ajax({
                 method: "GET",
-                url: "/ProjectApi/GetClientInvoiceGroup?parentId=10300",
+                url: "/ProjectApi/GetAppRefData?parentId=" + parentId,
                 success: function (data) {
-                    //console.log(data);
+
+                    $(ctrl).empty();
                     $(data).each(function () {
-                        $("#ddlInvoiceGroup").append($("<option></option>").val(this.keyId).html(this.keyName));
+                        $(ctrl).append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
                 },
-
-
-
-                error: function () { }
-            })
-        }
-
-
-
-
-        function BindTimeSheetTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetTimeSheetType?parentId=13120",
-                success: function (data) {
-                    //console.log(data);
-                    $(data).each(function () {
-                        $("#ddlTimesheetType").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-
                 error: function () { }
             });
-
         }
 
 
-
-        function BindPracticeTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetPracticeType?parentId=15760",
-                success: function (data) {
-                    //console.log(data);
-                    $(data).each(function () {
-                        $("#ddlPracticeType").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-
-                error: function () { }
-            });
-
-        }
 
 
         function BindRecruiterList() {

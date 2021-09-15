@@ -165,12 +165,23 @@
  
 
         $(document).ready(function () {
-            BindProjectStatusList();
-            BindProjectTypeList();
-            BindProjectCategoryList();
-            BindClientInvoiceGroupList();
-            BindTimeSheetTypeList();
-            BindPracticeTypeList();
+            const ProjectType = 4650,
+                ProjectStatus = 1800;
+            ProjectCategory = 19491;
+            InvoiceGroup = 10300;
+            TimeSheetType = 13120;
+            PracticeType = 15760;
+
+
+            BindAppRefData(ddlProjectType, ProjectType);
+            BindAppRefData(ddlProjectStatus, ProjectStatus);
+            BindAppRefData(ddlProjectCategory, ProjectCategory);
+            BindAppRefData(ddlInvoiceGroup, InvoiceGroup);
+            BindAppRefData(ddlTimesheetType, TimeSheetType);
+            BindAppRefData(ddlPracticeType, PracticeType);
+
+
+     
             BindRecruiterList();
             BindDomainList();
             BindLocationList();
@@ -226,7 +237,7 @@
         $(document).on('change', (event) => {
             const $ctrl = event.target;
             const ctrlId = $($ctrl).attr('id');
-            if (ctrlId === 'ddlProjectType') {
+            if (ctrlId === '#ddlProjectType') {
                 ProjTypeValidation();
             }
         });
@@ -725,157 +736,62 @@
 
         
 
+            //$.ajax({
+            //    method: "GET",
+            //    url: "/ProjectApi/GetEmpData?ProjectId=9092",
+            //    success: function (data) {
+
+            //        console.log(data);
+            //        console.log(data[0]);
+            //        console.log(data[0].isVMSTimeSheet);
+
+            //        $("#CustomerName").val(data[0].customerName);
+            //        $("#ProjectName").val(data[0].projectName);
+            //        $("#ProjectId").val(data[0].projectId);
+            //        $("#Start_Date").val(data[0].start_Date);
+            //        $("#End_Date").val(data[0].end_Date);
+            //        $("#ddlProjectStatus").val(data[0].projectStatus);
+            //        $("#ddlLocationGroup").val(data[0].locationGroup);
+            //        $("#ddlPayRollState").val(data[0].payRollState);
+            //        $("#ddlSalesPersonName").val(data[0].salesPerson);
+            //        $("#ddlProjectCategory").val(data[0].projectCategory);
+            //        $("#ddlProjectType").val(data[0].projectType);
+            //        $("#ddlSubDomain").val(data[0].subDomain);
+            //        $("#ddlTimeSheetRepresentative").val(data[0].timeSheetRepresentative);
+            //        $("#ddlInvoiceGroup").val(data[0].clientInvoiceGroup);
+            //        $("#ddlTimesheetType").val(data[0].timeSheetType);
+
+            //        $("input[name='IsVMSTimeSheet']:checked").val(data[0].isVMSTimeSheet);
+
+            //        $("#ddlPracticeType").val(data[0].practiceType);
+            //        $("#ddlRecruiter").val(data[0].recruiter);
+
+            //    },
+            //    error: function () { }
+            //})
+
+
+
+        function BindAppRefData(ctrl, parentId) {
+            //
             $.ajax({
                 method: "GET",
-                url: "/ProjectApi/GetEmpData?ProjectId=9092",
+                url: "/ProjectApi/GetAppRefData?parentId=" + parentId,
                 success: function (data) {
-
-                    console.log(data);
-                    console.log(data[0]);
-                    console.log(data[0].isVMSTimeSheet);
-
-                    $("#CustomerName").val(data[0].customerName);
-                    $("#ProjectName").val(data[0].projectName);
-                    $("#ProjectId").val(data[0].projectId);
-                    $("#Start_Date").val(data[0].start_Date);
-                    $("#End_Date").val(data[0].end_Date);
-                    $("#ddlProjectStatus").val(data[0].projectStatus);
-                    $("#ddlLocationGroup").val(data[0].locationGroup);
-                    $("#ddlPayRollState").val(data[0].payRollState);
-                    $("#ddlSalesPersonName").val(data[0].salesPerson);
-                    $("#ddlProjectCategory").val(data[0].projectCategory);
-                    $("#ddlProjectType").val(data[0].projectType);
-                    $("#ddlSubDomain").val(data[0].subDomain);
-                    $("#ddlTimeSheetRepresentative").val(data[0].timeSheetRepresentative);
-                    $("#ddlInvoiceGroup").val(data[0].clientInvoiceGroup);
-                    $("#ddlTimesheetType").val(data[0].timeSheetType);
-
-                    $("input[name='IsVMSTimeSheet']:checked").val(data[0].isVMSTimeSheet);
-
-                    $("#ddlPracticeType").val(data[0].practiceType);
-                    $("#ddlRecruiter").val(data[0].recruiter);
-
-                },
-                error: function () { }
-            })
-
-        
-
-
-
-        function BindProjectStatusList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetAppRefData?parentId=1800",
-                success: function (data) {
-                    console.log(data);
+                   
+                    $(ctrl).empty();
                     $(data).each(function () {
-                        $("#ddlProjectStatus").append($("<option></option>").val(this.keyId).html(this.keyName));
+                        $(ctrl).append($("<option></option>").val(this.keyId).html(this.keyName));
                     });
                 },
-
                 error: function () { }
             });
-
-        }
-
-
-
-        function BindProjectTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetProjectType?parentId=4650",
-                success: function (data) {
-                    console.log(data);
-                    $(data).each(function () {
-                        $("#ddlProjectType").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-                error: function () { }
-            })
-        }
-
-
-
-        function BindProjectCategoryList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetProjectCategory?parentId=19491",
-                success: function (data) {
-                    console.log(data);
-                    $(data).each(function () {
-                        $("#ddlProjectCategory").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-
-                error: function () { }
-            })
         }
 
 
 
 
-        function BindClientInvoiceGroupList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetClientInvoiceGroup?parentId=10300",
-                success: function (data) {
-                    console.log(data);
-                    $(data).each(function () {
-                        $("#ddlInvoiceGroup").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
 
-
-
-                error: function () { }
-            })
-        }
-
-
-
-
-        function BindTimeSheetTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetTimeSheetType?parentId=13120",
-                success: function (data) {
-                    console.log(data);
-                    $(data).each(function () {
-                        $("#ddlTimesheetType").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-
-                error: function () { }
-            });
-
-        }
-
-
-
-        function BindPracticeTypeList() {
-            $.ajax({
-                method: "GET",
-                url: "/ProjectApi/GetPracticeType?parentId=15760",
-                success: function (data) {
-                    console.log(data);
-                    $(data).each(function () {
-                        $("#ddlPracticeType").append($("<option></option>").val(this.keyId).html(this.keyName));
-                    });
-                },
-
-
-
-                error: function () { }
-            });
-
-        }
 
 
         function BindRecruiterList() {

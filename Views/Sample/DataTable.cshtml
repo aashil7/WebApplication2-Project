@@ -109,7 +109,8 @@
             </th>
 
 
-            <th>Id</th>
+            <th></th>
+
 
 
 
@@ -124,70 +125,6 @@
 
 
 
-
-    <tfoot>
-        <tr>
-
-            <th>EmployeeName</th>
-
-            <th>
-                ProjectName
-            </th>
-            <th>
-                ProjectId
-            </th>
-            <th>
-                Start_Date
-            </th>
-            <th>
-                End_Date
-            </th>
-            <th>
-                ProjectStatus
-            </th>
-            <th>
-                LocationGroup
-            </th>
-            <th>
-                PayRollState
-            </th>
-            <th>
-                SalesPerson
-            </th>
-            <th>
-                ProjectCategory
-            </th>
-            <th>
-                ProjectType
-            </th>
-            <th>
-                SubDomain
-            </th>
-            <th>
-                TimeSheetRepresentative
-            </th>
-            <th>
-                ClientInvoieGroup
-            </th>
-            <th>
-                TimeSheetType
-            </th>
-            <th>
-                IsVMSTimeSheet
-            </th>
-            <th>
-                PracticeType
-            </th>
-            <th>
-                Recruiter
-            </th>
-
-
-            <th>Id</th>
-
-
-        </tr>
-    </tfoot>
 
 
 
@@ -261,6 +198,7 @@
             $("#prjList").DataTable({
                 searching: false,
                 "lengthMenu": [[10, 1, 20, 100, -1], [10, 1, 20, 100, "All"]],
+             
                 ajax: {
                     url: "/ProjectApi/GetProjectsList",
                     dataSrc: ""
@@ -284,10 +222,14 @@
 
                     },
                     {
-                        data: "start_Date"
+                        data: "start_Date",
+                        format: "MM-DD-YYYY",
+                        fieldInfo: "mm-dd-yyyy"
                     },
                     {
-                        data: "end_Date"
+                        data: "end_Date",
+                        format: "MM-DD-YYYY",
+                        fieldInfo: "mm-dd-yyyy"
                     },
                     {
                         data: "projectStatus"
@@ -328,11 +270,12 @@
                     {
                         data: "recruiter"
                     },
+
                     {
                         data: "projectId",
-                        render: function (projectId, type, full, meta) {
+                        render: function (data, type, full, meta) {
                             //return meta.row;
-                            return '<a href=project?projectId=' + projectId + '><i class="glyphicon glyphicon-pencil"></i>Edit</a>'
+                            return '<a href=Edit?projectId' + data + '><i class="glyphicon glyphicon-pencil"></i>Edit</a>'
                         }
 
 
@@ -348,20 +291,17 @@
         });
 
 
-        //var AddEditEmployee = function (projectId) {
-
-        //    var url = "/project?projectId=" + projectId;
-
-        //    $("#prjList").load(url, function () {
-        //        $("#prjList").modal("show");
-
-        //    })
-
-        //}
-
 
 
     </script>
 }
 
 
+
+
+                    @*{
+                        data: "data",
+                        render: function (Add) {
+                            return '<a href=Edit?' + Add + '>Add</a>'
+                        }
+                    },*@

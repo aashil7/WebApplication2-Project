@@ -23,13 +23,13 @@ namespace WebApplication2.Models
 
         [Required(ErrorMessage = "Please Select Date Of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public String Start_Date { get; set; }
 
 
         [Required(ErrorMessage = "Please Select Date Of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public String End_Date { get; set; }
 
 

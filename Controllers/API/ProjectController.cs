@@ -36,68 +36,6 @@ namespace WebApplication2.Controllers.API
 
 
         [HttpGet]
-        [Route("ProjectApi/GetProjectType")]
-        public IHttpActionResult ProjectType(int parentId)
-        {
-            common objRepo = new common();
-            var appRefType = objRepo.GetAppRefData(parentId);
-            return Ok(appRefType);
-        }
-
-
-
-
-        [HttpGet]
-        [Route("ProjectApi/GetProjectCategory")]
-        public IHttpActionResult ProjectCategory(int parentId)
-        {
-            common objRepo = new common();
-            var appRefCategory = objRepo.GetAppRefData(parentId);
-            return Ok(appRefCategory);
-        }
-
-
-
-
-        [HttpGet]
-        [Route("ProjectApi/GetClientInvoiceGroup")]
-        public IHttpActionResult ClientInvoiceGroup(int parentId)
-        {
-            common objRepo = new common();
-            var appRefInvoice = objRepo.GetAppRefData(parentId);
-            return Ok(appRefInvoice);
-        }
-
-
-
-
-
-        [HttpGet]
-        [Route("ProjectApi/GetTimeSheetType")]
-        public IHttpActionResult TimeSheetType(int parentId)
-        {
-            common objRepo = new common();
-            var appRefSheetType = objRepo.GetAppRefData(parentId);
-            return Ok(appRefSheetType);
-        }
-
-
-
-
-
-        [HttpGet]
-        [Route("ProjectApi/GetPracticeType")]
-        public IHttpActionResult GetAppRefData(int parentId)
-        {
-            common objRepo = new common();
-            var appRefPracticeType = objRepo.GetAppRefData(parentId);
-            return Ok(appRefPracticeType);
-        }
-
-
-
-
-        [HttpGet]
         [Route("ProjectApi/GetRecruiters")]
         public IHttpActionResult Recruiters()
         {
@@ -169,10 +107,10 @@ namespace WebApplication2.Controllers.API
 
         [HttpGet]
         [Route("ProjectApi/GetEmpData")]
-        public IHttpActionResult Retrieve(string ProjectId)
+        public IHttpActionResult Retrieve(string data)
         {
             dataTab objRepo = new dataTab();
-            var retre = objRepo.GetEmpData(ProjectId);
+            var retre = objRepo.GetEmpData(data);
             return Ok(retre);
         }
 
@@ -199,14 +137,7 @@ namespace WebApplication2.Controllers.API
 
 
 
-        //[HttpGet]
-        //[Route("ProjectApi/GetManageSearch")]
-        //public IHttpActionResult ManageSearch(Project obj)
-        //{
-        //    common objRepo = new common();
-        //    var datatable = objRepo.GetManageSearch(obj);
-        //    return Ok(datatable);
-        //}
+ 
 
 
     }

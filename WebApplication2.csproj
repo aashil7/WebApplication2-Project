@@ -356,7 +356,6 @@
     <Content Include="Views\DataTable\DataTab.cshtml" />
     <Content Include="Views\Sample\DataTable.cshtml" />
     <Content Include="Views\Sample\Edit.cshtml" />
-    <Content Include="Views\Sample\Editor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

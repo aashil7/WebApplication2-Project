@@ -64,7 +64,7 @@ namespace WebApplication2.repository
 
 
         [WebMethod]
-        public List<Project> GetEmpData(string ProjectId)
+        public List<Project> GetEmpData(string data)
         {
 
             string sqlconnectionstring = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
@@ -73,7 +73,7 @@ namespace WebApplication2.repository
             {
                 SqlCommand cmd = new SqlCommand("Aashil_Edit", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter para = new SqlParameter("@ProjectId", ProjectId);
+                SqlParameter para = new SqlParameter("@ProjectId", data);
                 cmd.Parameters.Add(para);
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
